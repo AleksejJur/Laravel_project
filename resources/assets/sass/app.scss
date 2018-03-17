@@ -1,0 +1,75 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+//Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.card {
+  border-radius: 20px;
+  margin-top: 30%;
+}
+
+
+
+// body,
+// html {
+//   margin: 0;
+//   padding: 0;
+//   width: 100%;
+//   height: 100%;
+// }
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// figure {
+//   margin: 0;
+// }
+
+// img {
+//   width: 100%;
+//   height: auto;
+//   margin-top: 10px;
+// }
+
+// p {
+//   margin: 0;
+//   padding: 0;
+// }
+
+// header,
+// nav,
+// footer,
+// section,
+// article,
+// div {
+//   box-sizing: border-box;
+// }
+
+// ul {
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+// }
+
+// .grid {
+//   display: grid;
+//   grid-template-columns: repeat(6, 1fr);
+//   grid-template-rows: auto;
+// }
+
+// header {
+//   background-color: red;
+//   grid-column: 1 / 7;
+// }

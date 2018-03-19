@@ -102,10 +102,10 @@ h6 {
   margin-bottom: 0.5rem;
 }
 
-/* p {
+p {
   margin-top: 0;
   margin-bottom: 1rem;
-} */
+}
 
 abbr[title],
 abbr[data-original-title] {
@@ -10002,9 +10002,6 @@ a.text-dark:focus {
 
 .card {
   border-radius: 20px;
-}
-
-button {
-  color: white;
+  margin: 15px !important;
 }
 

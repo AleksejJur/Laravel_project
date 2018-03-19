@@ -2,46 +2,46 @@
 
 @section('content')
 <div class="container">
+    <div class="justify-content-center">
+        <h2 class="text-center">Product Categories</h2>
+        <p class="text-center">
+            <a href="https://project.test/categories/create" class="btn btn-primary">Add New Category</a>
+        </p>
+    </div>
+
+    <div class="card-body">
+
+        @if (session('status'))
+            <div class="alert alert-success">
+            {{ session('status') }}
+            </div>
+        @endif
+
+    <div>
+
     <div class="row justify-content-center">
 
-                </div class="card-header justify-content-center">
-                    <p class="text-center">Product Categories</p>
-                    <p class="text-center"><a href="https://project.test/categories/create" class="btn btn-primary">Add New Category</a></p>
-                </div>
+        @foreach ($categories as $category)
 
+            <div class="card" style="width: 15rem;">
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <div>
-                        <div class="row justify-content-center">
-
-                        @foreach ($categories as $category)
-
-                            <div class="card" style="width: 15rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$category->title}}</h5>
-                                <p class="card-text">{{$category->content}}</p>
-                                <a href="/categories/{{$category->id}}" class="btn btn-primary">View</a>
-                                <a href="/categories/{{$category->id}}/edit" class="btn btn-secondary">Edit</a>
-                                <form action="/categories/{{$category->id}}" method="POST">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <input type="submit" class="btn btn-danger" value="Delete"/>
-                                </form>
-                            </div>
-                            </div>
-
-                        @endforeach
-
-                        </div>
-                    </div>
+                    <img class="card-img-top" src="http://www.jaunuoliai.lt/images/uploader/180x180.g/fcnqgey-1.jpg" alt="Card image cap">
+                    <h5 class="card-title">{{$category->title}}</h5>
+                    <p class="card-text">{{$category->content}}</p>
+                    <div class="row justify-content-center">
+                        <a href="/categories/{{$category->id}}" class="btn btn-primary mr-2">View</a>
+                        <a href="/categories/{{$category->id}}/edit" class="btn btn-secondary mr-2">Edit</a>
+                        <form action="/categories/{{$category->id}}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="submit" class="btn btn-danger mr-2" value="Delete"/>
+                        </form>
+                    </div>    
                 </div>
             </div>
-        </div>
+
+        @endforeach
+
     </div>
 </div>
 @endsection

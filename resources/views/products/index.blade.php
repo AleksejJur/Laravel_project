@@ -2,13 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="justify-content-center">
-        <h2 class="text-center">Products</h2>
+    <div class="row justify-content-center">
+        <h2 class="text-left">Products</h2>
         <hr>
-        <p class="text-center">
-            <a href="https://project.test/products/create" class="btn btn-primary">Add New Product</a>
+        <p class="text-right">
+            <a href="https://project.test/products/create" class="btn btn-success">Add New Product</a>
         </p>
     </div>
+    <hr>
 
     <div class="card-body">
         @if (session('status'))

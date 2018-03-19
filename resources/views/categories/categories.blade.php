@@ -9,6 +9,7 @@
             <a href="https://project.test/categories/create" class="btn btn-success">Add New Category</a>
         </p>
     </div>
+    <hr>
 
     <div class="card-body">
         @if (session('status'))

@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-    <div class="justify-content-center">
-        <h2 class="text-center">Product Categories</h2>
+    <div class="row justify-content-center">
+        <h2 class="">Product Categories</h2>
         <hr>
-        <p class="text-center">
-            <a href="https://project.test/categories/create" class="btn btn-primary">Add New Category</a>
+        <p class="text-right">
+            <a href="https://project.test/categories/create" class="btn btn-success">Add New Category</a>
         </p>
     </div>
 
@@ -29,7 +29,7 @@
                     <p class="card-text">{{$category->content}}</p>
                     <div class="row justify-content-center">
                         <a href="/categories/{{$category->id}}" class="btn btn-primary mr-2">View</a>
-                        <a href="/categories/{{$category->id}}/edit" class="btn btn-secondary mr-2">Edit</a>
+                        <a href="/categories/{{$category->id}}/edit" class="btn btn-warning mr-2">Edit</a>
                         <form action="/categories/{{$category->id}}" method="POST">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -1,4 +1,4 @@
-<h1>Add New Category</h1>
+<h2>Add New Category</h2>
 <hr>
 <form action="/categories/store" method="post">
 	{{ csrf_field() }}
@@ -8,8 +8,17 @@
 	</div>
 	<div class="form-group">
 		<label for="content">Category Content</label>
-		<input type="text" class="form-control" id="categoryContent" name="content">
+		<div class="input-group">
+  			<textarea class="form-control" aria-label="With textarea" id="categoryContent" name="content"></textarea>
+		</div>
 	</div>
+	<div class="input-group">
+		<div class="custom-file">
+			<input type="file" class="custom-file-input" id="inputGroupFile04">
+			<label class="custom-file-label" for="inputGroupFile04">Choose Photo</label>
+		</div>
+	</div>
+	<br>
 	@if ($errors->any())
 	<div class="alert alert-danger">
 		<ul>
@@ -19,5 +28,5 @@
 		</ul>
 	</div>
 	@endif
-	<button type="submit" class="btn btn-primary">Submit</button>
+	<button type="submit" class="btn btn-success">Submit</button>
 </form>

@@ -4,19 +4,18 @@
 <div class="container">
     <div class="justify-content-center">
         <h2 class="text-center">Product Categories</h2>
+        <hr>
         <p class="text-center">
             <a href="https://project.test/categories/create" class="btn btn-primary">Add New Category</a>
         </p>
     </div>
 
     <div class="card-body">
-
         @if (session('status'))
             <div class="alert alert-success">
             {{ session('status') }}
             </div>
         @endif
-
     <div>
 
     <div class="row justify-content-center">

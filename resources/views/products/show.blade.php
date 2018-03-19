@@ -1,7 +1,7 @@
 @extends('layouts.app') @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-body">
                 
@@ -12,7 +12,7 @@
                     @endif
 
                     <h1>Showing {{$product->title}}</h1>
-                    <div class="jumbotron text-center">
+                    <div class="jumbotron">
                         <p>
                             <strong>Product Title:</strong> {{$product->title}}
                             <br>
@@ -26,6 +26,11 @@
                             <br>
                             <strong>Price : </strong> {{$product->price}} EUR
                         </p>
+                        <div>
+                        <img src="http://gerunda.lt/wp-content/uploads/2015/11/Rutulinis-kranas-sutvirtint-v_v-sr.-2.png" alt="..." class="img-thumbnail">
+                        <img src="http://gerunda.lt/wp-content/uploads/2015/11/Rutulinis-kranas-sutvirtint-v_v-sr.-2.png" alt="..." class="img-thumbnail">
+                        <img src="http://gerunda.lt/wp-content/uploads/2015/11/Rutulinis-kranas-sutvirtint-v_v-sr.-2.png" alt="..." class="img-thumbnail">
+                        </div>
                     </div>
                 </div>
             </div>

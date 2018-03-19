@@ -1,6 +1,9 @@
 @extends('layouts.app') 
 
 @section('content')
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-sm-8 col-sm-offset-2">
     <h1>Edit product</h1>
     <hr>
      <form action="{{url('products', [$product->id])}}" method="POST">
@@ -32,7 +35,6 @@
     </div>
     <div class="form-group">
         <label for="category">Produt Category</label>
-        <!-- <input type="number" class="form-control" id="productCategory" name="category"> -->
         <fieldset>
        
           @foreach ($categories as $category)
@@ -54,4 +56,7 @@
       @endif
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    </div>
+    </div>
+    </div>
 @endsection

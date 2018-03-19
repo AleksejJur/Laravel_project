@@ -3,8 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card ">
+
                 </div class="card-header justify-content-center">
                     <p class="text-center">Product Categories</p>
                     <p class="text-center"><a href="https://project.test/categories/create" class="btn btn-primary">Add New Category</a></p>

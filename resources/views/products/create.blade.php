@@ -6,7 +6,7 @@
 		<div class="col-sm-8 col-sm-offset-2">
     <h1>Add New Product</h1>
     <hr>
-     <form action="/products" method="post">
+     <form action="/products" method="post" enctype="multipart/form-data">
      {{ csrf_field() }}
       <div class="form-group">
         <label for="title">Product Title</label>
@@ -31,6 +31,14 @@
 	  <div class="form-group">
         <label for="price">Produt Price</label>
         <input type="number" class="form-control" id="productPrice" name="price">
+    </div>
+    <div class="form-group">
+      <div class="custom-file">
+        <p>
+          <input type="file" name="photoForProduct[]" id="photoForProduct" required multiple 
+          title="Upload one or more images">
+        </p>
+      </div>
     </div>
     <div class="form-group">
         <label for="category">Produt Category</label>

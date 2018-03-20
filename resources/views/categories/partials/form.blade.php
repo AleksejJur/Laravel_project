@@ -14,8 +14,7 @@
 	</div>
 	<div class="input-group">
 		<div class="custom-file">
-		<input type="file"  name="photoForCategory" id="photoForCategory">
-			<!-- <label class="custom-file-label" for="photoForCategory"></label> -->
+			<input type="file" name="photoForCategory" id="photoForCategory">
 		</div>
 	</div>
 	<br>

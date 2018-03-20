@@ -46,6 +46,7 @@ class ProductController extends Controller
             'size' => 'required',
             'manufacturer' => 'required',
             'material' => 'required',
+            'photoForProduct.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
         
         $product = Product::create(['title' => $request->title, 'price' => $request->price, 
@@ -54,6 +55,21 @@ class ProductController extends Controller
                                     ]);
 
         $product -> categories()->attach($request -> category);
+
+        // Storing Photo for product
+
+        if($request->isMethod('post')){
+            if($request->hasFile('photoForProduct')) {
+                $files = $request->file('photoForProduct');
+                    foreach ($files as $file) {
+                        $path = $file->store('public');
+                        $path = basename($path);
+                        $product->photos()->create(['file_name' => $path]);
+                    }
+                }
+            }
+
+
         return redirect('/products');
     }
 
@@ -119,6 +135,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $product->categories()->sync([]);
+        $product->photos()->delete();
         $product->delete();
         return redirect('/products');
     }

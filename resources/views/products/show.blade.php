@@ -25,12 +25,12 @@
                             <strong>Material : </strong> {{$product->material}}
                             <br>
                             <strong>Price : </strong> {{$product->price}} EUR
+
+    
+                            @foreach ($product->photos as $photo)
+                                <img class="card-img-top" src="{{ asset('storage/'. $photo->file_name)}}" alt="Card image cap">
+                            @endforeach
                         </p>
-                        <div>
-                        <img src="http://gerunda.lt/wp-content/uploads/2015/11/Rutulinis-kranas-sutvirtint-v_v-sr.-2.png" alt="..." class="img-thumbnail">
-                        <img src="http://gerunda.lt/wp-content/uploads/2015/11/Rutulinis-kranas-sutvirtint-v_v-sr.-2.png" alt="..." class="img-thumbnail">
-                        <img src="http://gerunda.lt/wp-content/uploads/2015/11/Rutulinis-kranas-sutvirtint-v_v-sr.-2.png" alt="..." class="img-thumbnail">
-                        </div>
                     </div>
                 </div>
             </div>

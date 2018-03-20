@@ -49,7 +49,6 @@ class CategoryController extends Controller
             if($request->hasFile('photoForCategory')) {
                 $file = $request->file('photoForCategory');
                 $path = $file->store('public');
-                
                 $path = basename($path);
                 $category->photos()->create(['file_name' => $path]);
             }
@@ -84,7 +83,10 @@ class CategoryController extends Controller
     public function delete(Request $request, $id)
     {
         //delete
+        
         $category = Category::findOrFail($id);
+        $category->products()->sync([]);
+        $category->photos()->delete();
         $category->delete();
 
         //redirect

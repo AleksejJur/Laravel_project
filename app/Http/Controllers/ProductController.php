@@ -54,7 +54,7 @@ class ProductController extends Controller
                                     ]);
 
         $product -> categories()->attach($request -> category);
-        return redirect('/products/'.$product->id);
+        return redirect('/products');
     }
 
     /**

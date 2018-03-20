@@ -16,4 +16,12 @@ class Category extends Model
         return $this->belongsToMany('App\Product');
     }
 
+    /**
+     * Get all of the categories photos.
+     */
+    public function photos()
+    {
+        return $this->morphMany('App\Photo', 'photobale');
+    }
+
 }

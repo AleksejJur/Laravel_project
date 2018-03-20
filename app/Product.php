@@ -15,5 +15,13 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Category');
     }
+
+    /**
+     * Get all of the categories photos.
+     */
+    public function photos()
+    {
+        return $this->morphMany('App\Photo', 'photobale');
+    }
 }
    

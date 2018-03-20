@@ -1,6 +1,6 @@
 <h2>Add New Category</h2>
 <hr>
-<form action="/categories/store" method="post">
+<form action="/categories/store" method="post" enctype="multipart/form-data">
 	{{ csrf_field() }}
 	<div class="form-group">
 		<label for="title">Category Title</label>
@@ -14,8 +14,8 @@
 	</div>
 	<div class="input-group">
 		<div class="custom-file">
-			<input type="file" class="custom-file-input" id="inputGroupFile04">
-			<label class="custom-file-label" for="inputGroupFile04">Choose Photo</label>
+		<input type="file"  name="photoForCategory" id="photoForCategory">
+			<!-- <label class="custom-file-label" for="photoForCategory"></label> -->
 		</div>
 	</div>
 	<br>

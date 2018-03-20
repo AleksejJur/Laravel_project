@@ -37,10 +37,26 @@ class CategoryController extends Controller
         $request->validate([
             'title' => 'required|min:3',
             'content' => 'required',
+            'photoForCategory' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
         
         $category = Category::create(['title' => $request->title,'content' => $request->content]);
+        
+        // Storing Photo for Category
+
+        if($request->isMethod('post')){
+
+            if($request->hasFile('photoForCategory')) {
+                $file = $request->file('photoForCategory');
+                $path = $file->store('public');
+                
+                $path = basename($path);
+                $category->photos()->create(['file_name' => $path]);
+            }
+        }
+
         return redirect('/categories');
+
     }
 
     public function edit($id) // WITH $ID

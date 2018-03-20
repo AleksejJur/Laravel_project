@@ -22,11 +22,12 @@
     <div class="row justify-content-center">
 
         @foreach ($categories as $category)
+        
 
             <div class="card" style="width: 15rem;">
                 <div class="card-body">
 
-                    <img class="card-img-top" src="http://www.jaunuoliai.lt/images/uploader/180x180.g/fcnqgey-1.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('storage/'. $category->photos[0]->file_name)}}" alt="Card image cap">
                     
                     <h5 class="card-title">{{$category->title}}</h5>
                     <p class="card-text">{{$category->content}}</p>

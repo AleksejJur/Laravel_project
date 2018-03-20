@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Photo extends Model
 {
   
-  public $table = 'photos';
+//   public $table = 'photos';
 
-  protected $fillable = ['title','image'];
+  protected $fillable = ['file_name'];
 
-  public $timestamps = true;
+//   public $timestamps = true;
+    
+    public function photable()
+    {
+        return $this->morphTo();
+    }
 }

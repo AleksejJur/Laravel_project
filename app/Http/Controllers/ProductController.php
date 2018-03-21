@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use App\Service\PhotoService;
 
 class ProductController extends Controller
 {
@@ -57,18 +58,14 @@ class ProductController extends Controller
         $product -> categories()->attach($request -> category);
 
         // Storing Photo for product
-
-        if($request->isMethod('post')){
-            if($request->hasFile('photoForProduct')) {
-                $files = $request->file('photoForProduct');
-                    foreach ($files as $file) {
-                        $path = $file->store('public');
-                        $path = basename($path);
-                        $product->photos()->create(['file_name' => $path]);
-                    }
+        
+        if($request->hasFile('photoForProduct')) {
+            $files = $request->file('photoForProduct');
+            $PhotoService = new PhotoService;
+                foreach ($files as $file) {
+                    $PhotoService->add($file, $category);
                 }
             }
-
 
         return redirect('/products');
     }

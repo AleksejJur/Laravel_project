@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
+use App\Services\PhotoService;
 
 class CategoryController extends Controller
 {
@@ -25,7 +26,6 @@ class CategoryController extends Controller
     {   
         $category = Category::findOrFail($id);
 
-
         $products = $category->products;
 
         return view('categories.category', ['category' => $category, 'products' => $products]);
@@ -44,14 +44,10 @@ class CategoryController extends Controller
         
         // Storing Photo for Category
 
-        if($request->isMethod('post')){
-
-            if($request->hasFile('photoForCategory')) {
-                $file = $request->file('photoForCategory');
-                $path = $file->store('public');
-                $path = basename($path);
-                $category->photos()->create(['file_name' => $path]);
-            }
+        if($request->hasFile('photoForCategory')) {
+            $file = $request->file('photoForCategory');
+            $PhotoService = new PhotoService;
+            $PhotoService->add($file, $category);
         }
 
         return redirect('/categories');

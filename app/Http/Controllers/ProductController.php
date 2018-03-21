@@ -67,9 +67,8 @@ class ProductController extends Controller
 
         if($request->hasFile('photoForProduct')) {
             $files = $request->file('photoForProduct');
-            $PhotoService = new PhotoService;
                 foreach ($files as $file) {
-                    $PhotoService->add($file, $product);
+                    $this->photoService->add($file, $product);
                 }
         }
 
@@ -127,6 +126,12 @@ class ProductController extends Controller
         $product->manufacturer = $request->manufacturer;
         $product->material = $request->material;
         $product->save();
+
+        if($request->hasFile('photoForProduct')) {
+            $file = $request->file('photoForProduct');
+            $this->photoService->update($file, $product);
+        }
+
         return redirect('/products');
     }
 

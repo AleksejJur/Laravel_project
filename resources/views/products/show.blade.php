@@ -28,7 +28,9 @@
 
     
                             @foreach ($product->photos as $photo)
-                                <img class="card-img-top" src="{{ asset('storage/'. $photo->file_name)}}" alt="Card image cap">
+                            <div>
+                                <img class="img-thumbnail" src="{{ asset('storage/'. $photo->file_name)}}" alt="Card image cap">
+                            </div>
                             @endforeach
                         </p>
                     </div>

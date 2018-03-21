@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
-use App\Service\PhotoService;
+use App\Services\PhotoService;
 
 class ProductController extends Controller
 {
+    protected $photoService;
+
+    public function __construct(PhotoService $photoService)
+    {
+        $this->photoService = $photoService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -58,14 +64,14 @@ class ProductController extends Controller
         $product -> categories()->attach($request -> category);
 
         // Storing Photo for product
-        
+
         if($request->hasFile('photoForProduct')) {
             $files = $request->file('photoForProduct');
             $PhotoService = new PhotoService;
                 foreach ($files as $file) {
-                    $PhotoService->add($file, $category);
+                    $PhotoService->add($file, $product);
                 }
-            }
+        }
 
         return redirect('/products');
     }
@@ -133,7 +139,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->categories()->sync([]);
-        $product->photos()->delete();
+        $this->photoService->delete($product);
         $product->delete();
         return redirect('/products');
     }

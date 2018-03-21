@@ -9,11 +9,18 @@ use App\Services\PhotoService;
 
 class CategoryController extends Controller
 {
+    protected $photoService;
+
+    public function __construct(PhotoService $photoService)
+    {
+        $this->photoService = $photoService;
+    }
+
     public function index()
     {
         //get all the categories
         $categories = Category::all();
-
+    
         return view('categories.categories', ['categories' => $categories]);
     }
 
@@ -46,18 +53,18 @@ class CategoryController extends Controller
 
         if($request->hasFile('photoForCategory')) {
             $file = $request->file('photoForCategory');
-            $PhotoService = new PhotoService;
-            $PhotoService->add($file, $category);
+            $this->photoService->add($file, $category);
         }
 
         return redirect('/categories');
 
     }
 
-    public function edit($id) // WITH $ID
+    public function edit(Request $request, $id)
     {
         $category = Category::findOrFail($id);
         return view('categories.edit', ['category' => $category]);
+        
     }
 
     public function update(Request $request, $id)
@@ -72,6 +79,11 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->content = $request->content;
         $category->save();
+
+        if($request->hasFile('photoForCategory')) {
+            $file = $request->file('photoForCategory');
+            $this->photoService->update($file, $category);
+        }
         $request->session()->flash('message', 'Successfully modified the category!');
         return redirect('/categories');
     }
@@ -82,7 +94,7 @@ class CategoryController extends Controller
         
         $category = Category::findOrFail($id);
         $category->products()->sync([]);
-        $category->photos()->delete();
+        $this->photoService->delete($category);
         $category->delete();
 
         //redirect

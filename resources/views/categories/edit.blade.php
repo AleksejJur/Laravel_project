@@ -6,7 +6,7 @@
         <div class="col-sm-6 col-sm-offset-2">
             <h2>Edit Category</h2>
             <hr>
-            <form action="/categories/{{$category->id}}/edit" method="post">
+            <form action="/categories/{{$category->id}}/edit" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Category Title</label>
@@ -16,6 +16,11 @@
                     <label for="content">Category Content</label>
                     <textarea cols="5" class="form-control" type="text" name="content" id="categoryContent" placeholder="{{$category->content}}"></textarea>
                 </div>
+                
+                @if ($category->photos->count() > 0)
+                    <img src="{{ asset('storage/'. $category->photos[0]->file_name)}}" alt="..." class="img-thumbnail">    
+                @endif
+
                 <div class="input-group">
                     <div class="custom-file">
                         <input type="file" name="photoForCategory" id="photoForCategory">

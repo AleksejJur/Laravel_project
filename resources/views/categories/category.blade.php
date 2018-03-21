@@ -15,7 +15,7 @@
 
                     @foreach ($products as $product)
 
-                    <h1>Showing {{$product->title}}</h1>
+                    <h1>Showing <a href="/products/{{$product->id}}"> {{$product->title}}</a></h1>
                     <div class="jumbotron">
                         <p>
                             <strong>Product Title:</strong> {{$product->title}}

@@ -16,6 +16,11 @@
                     <label for="content">Category Content</label>
                     <textarea cols="5" class="form-control" type="text" name="content" id="categoryContent" placeholder="{{$category->content}}"></textarea>
                 </div>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" name="photoForCategory" id="photoForCategory">
+                    </div>
+                </div>
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

@@ -26,8 +26,10 @@
 
             <div class="card" style="width: 15rem;">
                 <div class="card-body">
-
-                    <img class="card-img-top" src="{{ asset('storage/'. $category->photos[0]->file_name)}}" alt="Card image cap">
+                
+                    @if ($category->photos->count() > 0)
+                        <img class="card-img-top" src="{{ asset('storage/'. $category->photos[0]->file_name)}}" alt="Card image cap">
+                    @endif
                     
                     <h5 class="card-title">{{$category->title}}</h5>
                     <p class="card-text">{{$category->content}}</p>

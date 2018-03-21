@@ -33,7 +33,7 @@
 
                             @if ($product->photos->count() > 0) 
                             
-                            <img src="{{ asset('storage/'. $product->photos[0]->file_name)}}" class="rounded float-left" alt="...">
+                                <img src="{{ asset('storage/'. $product->photos[0]->file_name)}}" class="rounded float-left" alt="...">
                             
                             @endif
 

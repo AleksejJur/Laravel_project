@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use App\Services\PhotoService;
+use Storage;
 
 class PhotoService
 {
@@ -24,11 +25,10 @@ class PhotoService
 
     public function delete($object)
     {   
-        //paimti fotkes
-
-        // $name = $category->photos[0]->file_name;
-
-        // Storage::delete('public/');
+        foreach ($object->photos as $photo) 
+        {
+            Storage::delete('public/' . $photo->file_name);
+        }
 
         $object->photos()->delete();
         

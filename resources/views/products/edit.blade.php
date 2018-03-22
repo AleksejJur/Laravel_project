@@ -41,6 +41,7 @@
               <label class="btn btn-primary">
                 <img src="{{ asset('storage/'. $photo->file_name)}}"
                   alt="..." class="img-thumbnail img-check">
+                  <input type="checkbox" name="file[]" value="{{$photo->id}}">
               </label>
             </div>
           @endforeach
@@ -62,7 +63,7 @@
     </div>
     <div class="input-group">
       <div class="custom-file">
-        <input onchange="readURL(this);" type="file" src="#" alt="Image Display Here" name="photoForProduct" id="photoForProduct">
+        <input onchange="readURL(this);" type="file" src="#" alt="Image Display Here" name="photoForProduct[]" id="photoForProduct" multiple>
       </div>
     </div>
     @if ($errors->any())

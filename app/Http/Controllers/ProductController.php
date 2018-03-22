@@ -6,6 +6,7 @@ use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Services\PhotoService;
+use Photo;
 
 class ProductController extends Controller
 {
@@ -128,10 +129,17 @@ class ProductController extends Controller
         $product->save();
 
         if($request->hasFile('photoForProduct')) {
-            $file = $request->file('photoForProduct');
-            $this->photoService->update($file, $product);
+            $files = $request->file('photoForProduct');
+            foreach ($files as $file)
+            {
+                $this->photoService->add($file, $product);
+            }
+            
         }
-
+        if ($request->has('file'))
+        {
+            $this->photoService->deleteSome($request->file);
+        }
         return redirect('/products');
     }
 

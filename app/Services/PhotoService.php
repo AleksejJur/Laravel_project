@@ -7,6 +7,7 @@ use App\Category;
 use App\Product;
 use App\Services\PhotoService;
 use Storage;
+use App\Photo;
 
 class PhotoService
 {
@@ -25,14 +26,25 @@ class PhotoService
 
     public function delete($object)
     {   
+
+        // dd($object->photos);
         foreach ($object->photos as $photo) 
         {
             Storage::delete('public/' . $photo->file_name);
         }
 
         $object->photos()->delete();
-        
-        
+    }
+
+    public function deleteSome($ids)
+    {
+        foreach ($ids as $id)
+        {
+            $photo = Photo::FindOrFail($id);
+            Storage::delete('public/' . $photo->file_name);
+            $photo->delete();
+        }
+         
     }
 
     

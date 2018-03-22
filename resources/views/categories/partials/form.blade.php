@@ -14,9 +14,10 @@
 	</div>
 	<div class="input-group">
 		<div class="custom-file">
-			<input type="file" name="photoForCategory" id="photoForCategory">
+			<input onchange="readURL(this);" type="file" name="photoForCategory" id="photoForCategory">
 		</div>
 	</div>
+	<div><img  id="preview"  /></div>
 	<br>
 	@if ($errors->any())
 	<div class="alert alert-danger">

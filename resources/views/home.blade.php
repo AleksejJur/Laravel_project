@@ -15,7 +15,7 @@
 
                     <div class="row justify-content-center">
                         <p class="col-sm-3">
-                            <a class="btn btn-primary" href="https://project.test/categories/delete">Services</a>
+                            <a class="btn btn-primary" href="https://project.test/services">Services</a>
                         </p>
                         <p class="col-sm-5">
                             <a class="btn btn-primary" href="https://project.test/categories">Products Categories</a>

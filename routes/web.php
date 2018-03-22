@@ -28,5 +28,7 @@ Route::delete('/categories/{id}', 'CategoryController@delete')->name('category.i
 
 Route::resource('products', 'ProductController');
 
+Route::resource('services', 'ServiceController');
+
 
 

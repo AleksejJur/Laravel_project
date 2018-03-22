@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script type="text/javascript">
@@ -22,6 +22,12 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    $(document).ready(function(e){
+        $(".img-check").click(function(){
+            $(this).toggleClass("check");
+        });
+    });
     </script>
 </head>
 <body>

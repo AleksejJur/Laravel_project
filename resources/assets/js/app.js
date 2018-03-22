@@ -7,7 +7,7 @@
 
 require('./bootstrap');
 
-// import {$,jQuery} from 'jquery';
+import {$,jQuery} from 'jquery';
 
 // window.Vue = require('vue');
 
@@ -35,5 +35,11 @@ require('./bootstrap');
 //         reader.readAsDataURL(input.files[0]);
 //     }
 // }
+
+$(document).ready(function(e){
+    $(".img-check").click(function(){
+        $(this).toggleClass("check");
+    });
+});
 
 

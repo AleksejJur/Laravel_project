@@ -10005,3 +10005,8 @@ a.text-dark:focus {
   margin: 15px !important;
 }
 
+.check {
+  opacity: 0.2;
+  color: red;
+}
+

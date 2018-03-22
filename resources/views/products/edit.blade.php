@@ -57,13 +57,16 @@
         @foreach ($categories as $category)
 
         <input type="checkbox" name="category[]" value="{{$category->id}}" />{{$category->title}}
-        <br /> @endforeach
+        <br /> 
+        
+        @endforeach
 
       </fieldset>
     </div>
     <div class="input-group">
       <div class="custom-file">
         <input onchange="readURL(this);" type="file" src="#" alt="Image Display Here" name="photoForProduct[]" id="photoForProduct" multiple>
+        New :<img  id="preview"  />
       </div>
     </div>
     @if ($errors->any())

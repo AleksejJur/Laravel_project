@@ -6,7 +6,7 @@
         <h2 class="text-left">Products</h2>
         <hr>
         <p class="text-right">
-            <a href="https://project.test/products/create" class="btn btn-success">Add New Product</a>
+            <a href="/products/create" class="btn btn-success">Add New Product</a>
         </p>
     </div>
     <hr>

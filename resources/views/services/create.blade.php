@@ -5,7 +5,7 @@
         <div class="col-sm-6 col-sm-offset-2">
             <h2>Add New Service</h2>
             <hr>
-            <form action="/categories/store" method="post" enctype="multipart/form-data">
+            <form action="/services" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Service Title</label>
@@ -17,11 +17,18 @@
                         <textarea class="form-control" aria-label="With textarea" id="serviceContent" name="content"></textarea>
                     </div>
                 </div>
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" name="photoForService" id="photoForService">
+                <div class="form-group">
+                    <label for="price">Service Price</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="serviceTitle" name="price">
                     </div>
                 </div>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input onchange="readURL(this);" type="file" name="photoForService" id="photoForService">
+                    </div>
+                </div>
+                <div><img  id="preview"  /></div>
                 <br> @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

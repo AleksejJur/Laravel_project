@@ -57,9 +57,13 @@ class ProductController extends Controller
             'photoForProduct.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
         
-        $product = Product::create(['title' => $request->title, 'price' => $request->price, 
-                                    'description' => $request->description, 'size' => $request->size, 
-                                    'manufacturer' => $request->manufacturer, 'material' => $request->material
+        $product = Product::create([
+                                    'title' => $request->title,
+                                    'price' => $request->price, 
+                                    'description' => $request->description,
+                                    'size' => $request->size, 
+                                    'manufacturer' => $request->manufacturer,
+                                    'material' => $request->material
                                     ]);
 
         $product -> categories()->attach($request -> category);

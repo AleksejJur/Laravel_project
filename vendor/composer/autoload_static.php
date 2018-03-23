@@ -314,7 +314,6 @@ class ComposerStaticInitf76f683150722f1e5884c31427c64681
     );
 
     public static $classMap = array (
-        'App\\Basket' => __DIR__ . '/../..' . '/app/Basket.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -334,6 +333,8 @@ class ComposerStaticInitf76f683150722f1e5884c31427c64681
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Order' => __DIR__ . '/../..' . '/app/Order.php',
+        'App\\OrderItem' => __DIR__ . '/../..' . '/app/OrderItem.php',
         'App\\Photo' => __DIR__ . '/../..' . '/app/Photo.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

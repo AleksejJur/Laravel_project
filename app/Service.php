@@ -17,4 +17,9 @@ class Service extends Model
     {
         return $this->morphMany('App\Photo', 'photobale');
     }
+    
+    public function orderItems()
+    {
+        return $this->morphMany('App\OrderItem', 'orderable');
+    }
 }

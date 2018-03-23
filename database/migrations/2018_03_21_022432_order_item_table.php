@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBasketsTable extends Migration
+class OrderItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateBasketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('baskets', function (Blueprint $table) {
+        Schema::create('order_item', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('order_id');
+            $table->unsignedInteger('orderable_id');
+            $table->unsignedInteger('orderable_type');
+            $table->integer('price');
+            $table->integer('count');
+
         });
     }
 
@@ -26,6 +31,6 @@ class CreateBasketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('baskets');
+        Schema::dropIfExists('order_item');
     }
 }

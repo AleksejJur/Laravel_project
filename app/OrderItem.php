@@ -4,11 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Photo extends Model
+class OrderItem extends Model
 {
-    protected $fillable = ['file_name'];
-
-    public function photable()
+    public function orderable()
     {
         return $this->morphTo();
     }

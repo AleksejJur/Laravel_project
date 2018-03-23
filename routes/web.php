@@ -30,5 +30,7 @@ Route::resource('products', 'ProductController');
 
 Route::resource('services', 'ServiceController');
 
+Route::resource('orders', 'OrderController');
+
 
 

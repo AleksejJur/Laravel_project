@@ -6,8 +6,5 @@ use Illuminate\Http\Request;
 
 class PhotoController extends Controller
 {
-    public function fileUpload(Request $request)
-    {
-        
-    }
+    
 }

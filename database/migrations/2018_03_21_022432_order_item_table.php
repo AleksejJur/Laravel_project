@@ -19,7 +19,7 @@ class OrderItemTable extends Migration
             $table->unsignedInteger('orderable_id');
             $table->unsignedInteger('orderable_type');
             $table->integer('price');
-            $table->integer('count');
+            $table->integer('ammount');
 
         });
     }

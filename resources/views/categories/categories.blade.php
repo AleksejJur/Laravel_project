@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -10,7 +9,6 @@
         </p>
     </div>
     <hr>
-
     <div class="card-body">
         @if (session('status'))
             <div class="alert alert-success">
@@ -22,8 +20,6 @@
     <div class="row justify-content-center">
 
         @foreach ($categories as $category)
-        
-
             <div class="card" style="width: 15rem;">
                 <div class="card-body">
                 
@@ -46,7 +42,6 @@
             </div>
 
         @endforeach
-
     </div>
 </div>
 @endsection

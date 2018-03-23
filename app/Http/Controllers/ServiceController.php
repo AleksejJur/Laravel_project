@@ -51,9 +51,10 @@ class ServiceController extends Controller
 
     public function show($id)
     {
-        $service = Service::findOrFail($id);
+        
+        $services = Service::findOrFail($id);
 
-        return view('services.show', ['service' => $service]);
+        return view('services.show', ['services' => $services]);
     }
 
     public function edit(Request $request, $id)
@@ -62,7 +63,7 @@ class ServiceController extends Controller
         return view('services.edit', ['service' => $service]);
     }
 
-    public function update(Request $request, Service $service)
+    public function update(Request $request, $id)
     {
         //Validate
         $request->validate([
@@ -79,15 +80,21 @@ class ServiceController extends Controller
         $service->save();
 
         if($request->hasFile('photoForService')) {
-            $files = $request->file('photoForService');
+            $file = $request->file('photoForService');
             $this->photoService->update($file, $service);
             
         }
         return redirect('/services');
     }
 
-    public function destroy()
+    public function destroy(Request $request, $id)
     {
+        $service = Service::FindOrFail($id);
+        $this->photoService->delete($service);
+        $service->delete();
 
+        //redirect
+        $request->session()->flash('message', 'Successfully deleted the service!');
+        return redirect('/services');
     }
 }

@@ -122,7 +122,7 @@ class ProductController extends Controller
             'material' => 'required',
         ]);
 
-        $product -> categories()->attach($request -> category);
+        $product -> categories()->sync($request -> category);
         
         $product->title = $request->title;
         $product->price = $request->price;

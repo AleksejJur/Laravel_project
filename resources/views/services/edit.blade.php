@@ -1,5 +1,4 @@
-@extends('layouts.app') 
-
+@extends('layouts.app')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -15,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content">Service Content</label>
-                    <textarea cols="5" class="form-control" type="text" name="content" id="serviceContent" placeholder="{{$service->content}}"></textarea>
+                    <textarea cols="5" class="form-control" type="text" name="content" id="serviceContent" placeholder="">{{$service->content}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="price">Service Price</label>
@@ -39,12 +38,15 @@
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
+
                         @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                            <li>{{ $error }}</li>
                         @endforeach
+                        
                     </ul>
                 </div>
                 @endif
+
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
         </div>

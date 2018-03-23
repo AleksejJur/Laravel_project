@@ -93,7 +93,7 @@ class CategoryController extends Controller
     {
         //delete
         
-        $category = Category::findOrFail($id);
+        $category = Category::FindOrFail($id);
         $category->products()->sync([]);
         $this->photoService->delete($category);
         $category->delete();

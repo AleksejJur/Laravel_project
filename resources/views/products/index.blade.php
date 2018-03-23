@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -10,24 +9,25 @@
         </p>
     </div>
     <hr>
-
     <div class="card-body">
+
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
             </div>
         @endif
-    <div>
 
+    <div>
     <div class="row justify-content-center">
 
         @foreach ($products as $product)
-
             <div class="card" style="width: 15rem;">
                 <div class="card-body">
+
                 @if ($product->photos->count() > 0) 
                     <img class="card-img-top" src="{{ asset('storage/'. $product->photos[0]->file_name)}}" alt="Card image cap">
                 @endif
+
                     <h5 class="card-title"><a href="/products/{{$product->id}}">Title : {{$product->title}}</a></h5>
                     <p class="card-text">Manufacturer : {{$product->manufacturer}}</p>
                     <p class="card-text">Description : {{$product->description}}</p>
@@ -45,7 +45,6 @@
                     </form>
                 </div>
             </div>
-
         @endforeach
 
     </div>

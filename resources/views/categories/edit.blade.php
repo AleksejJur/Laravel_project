@@ -1,5 +1,4 @@
-@extends('layouts.app') 
-
+@extends('layouts.app')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -18,11 +17,10 @@
                 </div>
                 
                 @if ($category->photos->count() > 0)
-                <div class="row justify-content-center">
-                    Old :<img src="{{ asset('storage/'. $category->photos[0]->file_name)}}" alt="..." class="img-thumbnail">
-                    New :<img  id="preview"  />
-                </div>
-                        
+					<div class="row justify-content-center">
+						Old :<img src="{{ asset('storage/'. $category->photos[0]->file_name)}}" alt="..." class="img-thumbnail">
+						New :<img  id="preview"  />
+					</div>     
                 @endif
 
                 <div class="input-group">
@@ -36,11 +34,12 @@
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        	<li>{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
                 @endif
+				
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
         </div>

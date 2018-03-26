@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Service;
+use App\Order;
 use App\Services\PhotoService;
 
 class OrderController extends Controller
@@ -12,7 +13,9 @@ class OrderController extends Controller
     
     public function index()
     {
-        
+        $orders = Order::all();
+
+        return view('orders.index', ['orders' => $orders]);
     }
 
     public function create()
@@ -22,6 +25,12 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        $order = Order::create(['adress' => $request->adress,
+                                'clientFullName' => $request->clientFullName,
+                                'clientNumber' => $request->clientNumber,
+                                'orderDescription' => $request->orderDescription,
+                                'orderStatus' => $request->orderStatus]);
+
         return redirect('/orders');
     }
 
@@ -35,7 +44,8 @@ class OrderController extends Controller
 
     public function edit(Request $request, $id)
     {
-        
+        $order = Order::FindOrFail($id);
+        return view('orders.edit', ['order' => $order]);
     }
 
     public function update(Request $request, $id)

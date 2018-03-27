@@ -20,7 +20,7 @@ class OrderItemTable extends Migration
             $table->unsignedInteger('orderable_type');
             $table->integer('price');
             $table->integer('ammount');
-
+            $table->timestamps();
         });
     }
 

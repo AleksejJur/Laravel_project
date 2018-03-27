@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\PhotoService;
 use App\Service;
+use App\Order;
 
 class ServiceController extends Controller
 {
@@ -15,11 +16,11 @@ class ServiceController extends Controller
         $this->photoService = $photoService;
     }
 
-    public function index()
-    {
+    public function index(Request $request)
+    {   
         $services = Service::all();
-
-        return view('services.index', ['services' => $services]);
+        $order_id = $request->order_id;
+        return view('services.index', ['services' => $services, 'order_id' => $order_id]);
     }
 
     public function create()
@@ -51,7 +52,6 @@ class ServiceController extends Controller
 
     public function show($id)
     {
-        
         $services = Service::findOrFail($id);
 
         return view('services.show', ['services' => $services]);
@@ -70,7 +70,7 @@ class ServiceController extends Controller
             'title' => 'required|min:3',
             'content' => 'required',
             'price' => 'required',
-            'photoForService' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'photoForService' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
 
         $service = Service::FindOrFail($id);

@@ -22,12 +22,27 @@
                         <input type="text" class="form-control" id="serviceTitle" name="price" value="{{$service->price}}">
                     </div>
                 </div>
+
+                @if ($service->photos->count() > 0)
+				    <div class="row justify-content-center">
+					<p>Old :</p>
+
+				    @foreach ($service->photos as $photo)
+                        <div>
+                            <label class="btn btn-primary">
+                                <img src="{{ asset('storage/'. $service->photos[0]->file_name)}}"
+                                alt="..." class="img-thumbnail img-check">
+                                <input type="checkbox" name="file[]" value="{{$photo->id}}">
+                            </label>
+                        </div>
+				    @endforeach
+
+                    <br>
+                    </div>
+                    <p class="row">New :</p>
+                    <img id="preview" />
+                @endif
                 
-                <div class="row justify-content-center">
-                    Old :<img src="{{ asset('storage/'. $service->photos[0]->file_name)}}" alt="..." class="img-thumbnail">
-                    New :<img  id="preview"  />
-                </div>
-                        
                 <div class="input-group">
                     <div class="custom-file">
                         <input onchange="readURL(this);" type="file" src="#" alt="Image Display Here" name="photoForService" id="photoForService"

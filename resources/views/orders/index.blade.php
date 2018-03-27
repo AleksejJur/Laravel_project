@@ -23,7 +23,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Adress</th>
-                <th scope="col">Full Name</th>
+                <th scope="col">Client</th>
                 <th scope="col">Order Status</th>
                 <th scope="col">Created At</th>
                 <th scope="col"></th>
@@ -34,7 +34,7 @@
             @foreach ($orders as $order)
                 <tr>
                     <th scope="row">{{$order->id}}</th>
-                    <td>{{$order->adress}}k</td>
+                    <td>{{$order->adress}}</td>
                     <td>{{$order->clientFullName}}</td>
                     <td>{{$order->orderStatus}}</td>
                     <td>{{$order->created_at}}</td>

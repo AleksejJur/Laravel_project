@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-sm-8 col-sm-offset-2">
-      		<h1>Edit Order</h1>
+			<a href="/orders"><h2 class="">Edit Order</h2></a>
       		<hr>
 			<form action="{{url('orders', [$order->id])}}" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="_method" value="PUT"> {{ csrf_field() }}
@@ -11,35 +11,35 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="adress">Order Adress</label>
                     </div>
-                    <input type="text" class="form-control" id="orderAdress" name="adress">
+                    <input type="text" class="form-control" id="orderAdress" name="adress" value="{{$order->adress}}">
                 </div>
-				<div class="form-group">
-					<label for="clientFullName">Client Full Name</label>
-					<input type="text" class="form-control" id="orderClientFullName" name="clientFullName">
-				</div>
-                <div class="form-group">
-					<label for="clientNumber">Client Number</label>
-					<input type="text" class="form-control" id="orderClientNumber" name="clientNumber">
-				</div>
+				<div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="adress">Client Full Name</label>
+                    </div>
+                    <input type="text" class="form-control" id="orderClientFullName" name="clientFullName" value="{{$order->clientFullName}}">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="adress">Client Number</label>
+                    </div>
+                    <input type="text" class="form-control" id="orderClientNumber" name="clientNumber" value="{{$order->clientNumber}}">
+                </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="orderDescription">Order Description</label>
                     </div>
-                    <input type="text" class="form-control" id="orderDescription" name="orderDescription">
+                    <input type="text" class="form-control" id="orderDescription" name="orderDescription" value="{{$order->orderDescription}}">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="clientStatus">Order Status</label>
+                        <label class="input-group-text" for="orderStatus">Order Status</label>
                     </div>
-                    <select class="custom-select" id="orderClientStatus">
-                        <option name="clientStatus" selected value="in_progress">In Progress</option>
-                        <option name="clientStatus" value="finished">Finished</option>
+                    <select name="orderStatus" class="custom-select" id="orderClientStatus">
+                        <option selected value="In Progress">In Progress</option>
+                        <option value="Finished">Finished</option>
                     </select>
                 </div>
-                <div class="form-group">
-					<label for="orderDate">Date</label>
-					<input type="date" class="form-control" id="orderDate" name="orderDate">
-				</div>
 
 			@if ($errors->any())
 				<div class="alert alert-danger">

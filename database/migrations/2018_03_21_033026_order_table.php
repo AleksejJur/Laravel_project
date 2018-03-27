@@ -17,9 +17,9 @@ class OrderTable extends Migration
             $table->increments('id');
             $table->string('adress');
             $table->string('clientFullName');
-            $table->integer('clientNumber');
+            $table->string('clientNumber');
             $table->text('orderDescription');
-            $table->integer('orderStatus');
+            $table->string('orderStatus');
             $table->timestamps();
         });
     }

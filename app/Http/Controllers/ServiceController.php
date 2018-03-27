@@ -33,7 +33,7 @@ class ServiceController extends Controller
             'title' => 'required|min:3',
             'content' => 'required',
             'price' => 'required',
-            'photoForService' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'photoForService' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
         
         $service = Service::create(['title' => $request->title,

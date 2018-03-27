@@ -36,7 +36,6 @@ class OrderController extends Controller
 
     public function show($id)
     {
-        
         $orders = Order::findOrFail($id);
 
         return view('orders.show', ['orders' => $orders]);
@@ -50,11 +49,31 @@ class OrderController extends Controller
 
     public function update(Request $request, $id)
     {
+        //Validate
+        $request->validate([
+            'adress' => 'required|min:3',
+            'clientFullName' => 'required',
+            'clientNumber' => 'required',
+            'orderDescription' => 'required',
+            'orderStatus' => 'required',
+            'photoForService' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+        ]);
+
+        $order = Order::FindOrFail($id);
+        $order->adress = $request->adress;
+        $order->clientFullName = $request->clientFullName;
+        $order->clientNumber = $request->clientNumber;
+        $order->orderDescription = $request->orderDescription;
+        $order->orderStatus = $request->orderStatus;
+        $order->save();
+
         return redirect('/orders');
     }
 
     public function destroy(Request $request, $id)
     {
+        $order = Order::FindOrFail($id);
+        $order->delete();
         return redirect('/orders');
     }
 }

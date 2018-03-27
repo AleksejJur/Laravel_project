@@ -13,14 +13,18 @@
                     </div>
                     <input type="text" class="form-control" id="orderAdress" name="adress">
                 </div>
-				<div class="form-group">
-					<label for="clientFullName">Client Full Name</label>
-					<input type="text" class="form-control" id="orderClientFullName" name="clientFullName">
-				</div>
-                <div class="form-group">
-					<label for="clientNumber">Client Number</label>
-					<input type="text" class="form-control" id="orderClientNumber" name="clientNumber">
-				</div>
+				<div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="adress">Client Full Name</label>
+                    </div>
+                    <input type="text" class="form-control" id="orderClientFullName" name="clientFullName">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="adress">Client Number</label>
+                    </div>
+                    <input type="text" class="form-control" id="orderClientNumber" name="clientNumber">
+                </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="orderDescription">Order Description</label>
@@ -31,16 +35,11 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="orderStatus">Order Status</label>
                     </div>
-                    <input type="text" class="form-control" id="orderStatus" name="orderStatus">
-                    <!-- <select class="custom-select" id="orderClientStatus">
-                        <option name="orderStatus" selected value="in_progress">In Progress</option>
-                        <option name="orderStatus" value="finished">Finished</option>
-                    </select> -->
+                    <select name="orderStatus" class="custom-select" id="orderClientStatus">
+                        <option selected value="In Progress">In Progress</option>
+                        <option value="Finished">Finished</option>
+                    </select>
                 </div>
-                <!-- <div class="form-group">
-					<label for="orderDate">Date</label>
-					<input type="date" class="form-control" id="orderDate" name="orderDate">
-				</div> -->
 
 				@if ($errors->any())
 					<div class="alert alert-danger">

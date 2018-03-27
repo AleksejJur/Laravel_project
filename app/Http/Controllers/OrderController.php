@@ -95,9 +95,9 @@ class OrderController extends Controller
         //                              ]);
         // // dd($orderItem->ammount);
 
-        $order = OrderItem::where('order_id', '=', '1' AND 
-                                  'orderable_id', '=', $request->service_id AND  
-                                  'orderable_type', '=', Service::class)->get();
+        $order = OrderItem::where('order_id', '=', '1')
+                            ->where('orderable_id', '=', $request->service_id)
+                            ->where('orderable_type', '=', Service::class)->get();
         
         dd($order);
        

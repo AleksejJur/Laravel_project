@@ -20,6 +20,7 @@ class ServiceController extends Controller
     {   
         $services = Service::all();
         $order_id = $request->order_id;
+        
         return view('services.index', ['services' => $services, 'order_id' => $order_id]);
     }
 

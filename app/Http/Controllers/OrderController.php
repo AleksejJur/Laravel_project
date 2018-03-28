@@ -16,7 +16,6 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
-        
         $orderItem = OrderItem::all();
 
         return view('orders.index', ['orders' => $orders]);
@@ -41,15 +40,18 @@ class OrderController extends Controller
     public function show($id)
     {
         $orders = Order::FindOrFail($id);
-
-        $orderItem = OrderItem::all();
- 
-        return view('orders.show', ['orders' => $orders, 'orderItem' => $orderItem]);
+        $orderItemService = $orders->orderItems()->where('orderable_type', Service::class)->get();
+        $orderItemProduct = $orders->orderItems()->where('orderable_type', Product::class)->get();
+        
+        return view('orders.show', ['orders' => $orders,
+                                    'orderItemService' => $orderItemService, 
+                                    'orderItemProduct' => $orderItemProduct]);
     }
 
     public function edit(Request $request, $id)
     {
         $order = Order::FindOrFail($id);
+
         return view('orders.edit', ['order' => $order]);
     }
 
@@ -79,6 +81,7 @@ class OrderController extends Controller
     {
         $order = Order::FindOrFail($id);
         $order->delete();
+
         return redirect('/orders');
     }
 
@@ -87,20 +90,52 @@ class OrderController extends Controller
         $service = Service::FindOrFail($request->service_id);
         $orders = Order::FindOrFail($id);
 
-        // $orderItem = OrderItem::create(['order_id' => $id,
-        //                               'price' => $service->price,
-        //                               'orderable_id' => $service->id,
-        //                               'orderable_type' => Service::class,
-        //                               'ammount' => $request->service_ammount,
-        //                              ]);
-        // // dd($orderItem->ammount);
-
-        $order = OrderItem::where('order_id', '=', '1')
+        $order = OrderItem::where('order_id', '=', $id)
                             ->where('orderable_id', '=', $request->service_id)
-                            ->where('orderable_type', '=', Service::class)->get();
-        
-        dd($order);
-       
+                            ->where('orderable_type', '=', Service::class)->first();
+
+                            if ($order != null) 
+                            {
+                                $order->ammount += $request->service_ammount;
+                                $order->save();
+                            } 
+                            else 
+                            {
+                               $orderItem = OrderItem::create(['order_id' => $id,
+                                      'price' => $service->price,
+                                      'orderable_id' => $service->id,
+                                      'orderable_type' => Service::class,
+                                      'ammount' => $request->service_ammount,
+                                     ]); 
+                            }
+
+        return redirect('/orders');
+    }
+
+    public function addProduct(Request $request, $id)
+    {
+        $product = Product::FindOrFail($request->product_id);
+        $orders = Order::FindOrFail($id);
+
+        $order = OrderItem::where('order_id', '=', $id)
+                            ->where('orderable_id', '=', $request->product_id)
+                            ->where('orderable_type', '=', Product::class)->first();
+
+                            if ($order != null) 
+                            {
+                                $order->ammount += $request->product_ammount;
+                                $order->save();
+                            } 
+                                else 
+                            {
+                               $orderItem = OrderItem::create(['order_id' => $id,
+                                      'price' => $product->price,
+                                      'orderable_id' => $product->id,
+                                      'orderable_type' => Product::class,
+                                      'ammount' => $request->product_ammount,
+                                     ]); 
+                            }
+
         return redirect('/orders');
     }
 }

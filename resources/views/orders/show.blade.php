@@ -22,7 +22,7 @@
         <div class="card-header">{{$orders->adress}} - {{$orders->clientFullName}} - +{{$orders->clientNumber}}</div>
         <div class="card-header">
             <a href="/services/?order_id={{$orders->id}}"><button>Add Service From List</button></a>
-            <button>Add Product From List</button>
+            <a href="/products/?order_id={{$orders->id}}"><button>Add Product From List</button></a>
         </div>
         <div class="card-body">
             <h5 class="card-title">Status : {{$orders->status}}</h5>
@@ -31,6 +31,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Service</th>
                         <th scope="col">Service ammount</th>
                         <th scope="col">Price</th>
                         <th scope="col">Total</th>
@@ -38,12 +39,38 @@
                 </thead>
                 <tbody>
 
-                @foreach ($orderItem as $order)
+                @foreach ($orderItemService as $orderService)
                     <tr>
-                        <th scope="row">1</th>
-                            <td scope="row">{{$order->ammount}}</td>
-                            <td scope="row">{{$order->price}} EUR</td>
-                            <td scope="row">{{$order->ammount * $order->price}}</td>
+                        <th scope="row"></th>
+                            <td scope="row">{{$orderService->orderable->title}}</td>
+                            <td scope="row">{{$orderService->ammount}}</td>
+                            <td scope="row">{{$orderService->price}} EUR</td>
+                            <td scope="row">{{$orderService->ammount * $orderService->price}}</td>
+                    </tr>
+                @endforeach
+                    
+                </tbody>
+            </table>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Product ammount</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                
+                @foreach ($orderItemProduct as $orderProduct)
+                    <tr>
+                        <th scope="row"></th>
+                            <td scope="row">{{$orderProduct->orderable->title}}</td>
+                            <td scope="row">{{$orderProduct->ammount}}</td>
+                            <td scope="row">{{$orderProduct->price}} EUR</td>
+                            <td scope="row">{{$orderProduct->ammount * $orderProduct->price}}</td>
                     </tr>
                 @endforeach
                     

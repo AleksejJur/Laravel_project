@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\Order;
+use App\OrderItem;
 use Illuminate\Http\Request;
 use App\Services\PhotoService;
 use Photo;
@@ -21,10 +23,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $products = Product::all();
-        return view('products.index',compact('products',$products));
+        $order_id = $request->order_id;
+
+        return view('products.index',compact('products',$products), ['order_id' => $order_id]);
     }
 
     /**

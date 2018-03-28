@@ -38,7 +38,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="submit" class="btn btn-danger mr-2" value="Delete"/>
                     </form>
-                    <form action="/orders/{{$order_id}}/add" method="POST">
+                    <form action="/orders/{{$order_id}}/add/service" method="POST">
                         <input type="number" name="service_ammount">
                         <input type="hidden" name="service_id" value="{{$service->id}}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

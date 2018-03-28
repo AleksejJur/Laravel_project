@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <h2 class="">Product Services</h2>
+        <h2 class="">Services</h2>
         <hr>
         <p class="text-right">
             <a href="/services/create" class="btn btn-success">Add New Service</a>

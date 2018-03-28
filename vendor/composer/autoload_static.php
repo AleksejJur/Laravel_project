@@ -79,6 +79,7 @@ class ComposerStaticInitf76f683150722f1e5884c31427c64681
         array (
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
+            'Laravel\\Scout\\' => 14,
         ),
         'I' => 
         array (
@@ -241,6 +242,10 @@ class ComposerStaticInitf76f683150722f1e5884c31427c64681
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
+        ),
+        'Laravel\\Scout\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/scout/src',
         ),
         'Intervention\\Image\\' => 
         array (
@@ -2294,6 +2299,20 @@ class ComposerStaticInitf76f683150722f1e5884c31427c64681
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
+        'Laravel\\Scout\\Builder' => __DIR__ . '/..' . '/laravel/scout/src/Builder.php',
+        'Laravel\\Scout\\Console\\FlushCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/FlushCommand.php',
+        'Laravel\\Scout\\Console\\ImportCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/ImportCommand.php',
+        'Laravel\\Scout\\EngineManager' => __DIR__ . '/..' . '/laravel/scout/src/EngineManager.php',
+        'Laravel\\Scout\\Engines\\AlgoliaEngine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/AlgoliaEngine.php',
+        'Laravel\\Scout\\Engines\\Engine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/Engine.php',
+        'Laravel\\Scout\\Engines\\NullEngine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/NullEngine.php',
+        'Laravel\\Scout\\Events\\ModelsFlushed' => __DIR__ . '/..' . '/laravel/scout/src/Events/ModelsFlushed.php',
+        'Laravel\\Scout\\Events\\ModelsImported' => __DIR__ . '/..' . '/laravel/scout/src/Events/ModelsImported.php',
+        'Laravel\\Scout\\Jobs\\MakeSearchable' => __DIR__ . '/..' . '/laravel/scout/src/Jobs/MakeSearchable.php',
+        'Laravel\\Scout\\ModelObserver' => __DIR__ . '/..' . '/laravel/scout/src/ModelObserver.php',
+        'Laravel\\Scout\\ScoutServiceProvider' => __DIR__ . '/..' . '/laravel/scout/src/ScoutServiceProvider.php',
+        'Laravel\\Scout\\Searchable' => __DIR__ . '/..' . '/laravel/scout/src/Searchable.php',
+        'Laravel\\Scout\\SearchableScope' => __DIR__ . '/..' . '/laravel/scout/src/SearchableScope.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',

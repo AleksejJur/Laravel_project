@@ -17,6 +17,7 @@ class ProductController extends Controller
     public function __construct(PhotoService $photoService)
     {
         $this->photoService = $photoService;
+
     }
     /**
      * Display a listing of the resource.

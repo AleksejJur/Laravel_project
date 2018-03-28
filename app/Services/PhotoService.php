@@ -8,14 +8,16 @@ use App\Product;
 use App\Services\PhotoService;
 use Storage;
 use App\Photo;
+use Intervention\Image\ImageManager;
+use Image;
 
 class PhotoService
 {
     public function add($file, $object) 
     {
-        $path = $file->store('public');
-        $path = basename($path);
-        $object->photos()->create(['file_name' => $path]);
+        $image = storage_path('app/public/') . $file->getClientOriginalName();
+        Image::make($file)->resize(200, 200)->save($image);
+        $object->photos()->create(['file_name' => $file->getClientOriginalName()]);
     }
 
     public function update($file, $object)
@@ -26,8 +28,6 @@ class PhotoService
 
     public function delete($object)
     {   
-
-        // dd($object->photos);
         foreach ($object->photos as $photo) 
         {
             Storage::delete('public/' . $photo->file_name);

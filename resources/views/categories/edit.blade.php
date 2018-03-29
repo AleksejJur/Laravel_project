@@ -5,8 +5,9 @@
         <div class="col-sm-6 col-sm-offset-2">
             <h2>Edit Category</h2>
             <hr>
-            <form action="/categories/{{$category->id}}/edit" id="form1" method="post" enctype="multipart/form-data" runat="server">
-                {{ csrf_field() }}
+            <form action="{{url('categories', [$category->id])}}" id="form1" method="post" enctype="multipart/form-data" runat="server">
+            <input type="hidden" name="_method" value="PUT"> 
+            {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Category Title</label>
                     <input type="text" class="form-control" id="categoryTitle" name="title" value="{{$category->title}}">

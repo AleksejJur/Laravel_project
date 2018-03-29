@@ -66,7 +66,6 @@ class ServiceController extends Controller
 
     public function update(Request $request, $id)
     {
-        //Validate
         $request->validate([
             'title' => 'required|min:3',
             'content' => 'required',

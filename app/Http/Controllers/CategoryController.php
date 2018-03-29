@@ -14,30 +14,36 @@ class CategoryController extends Controller
     public function __construct(PhotoService $photoService)
     {
         $this->photoService = $photoService;
-    }
 
-    public function index()
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
     {
-        //get all the categories
         $categories = Category::all();
     
-        return view('categories.categories', ['categories' => $categories]);
+        return view('categories.index', ['categories' => $categories]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('categories.create');
     }
 
-    public function show($id)
-    {   
-        $category = Category::findOrFail($id);
-
-        $products = $category->products;
-
-        return view('categories.category', ['category' => $category, 'products' => $products]);
-    }
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         //Validate
@@ -57,16 +63,42 @@ class CategoryController extends Controller
         }
 
         return redirect('/categories');
-
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $category = Category::findOrFail($id);
+
+        $products = $category->products;
+
+        return view('categories.show', ['category' => $category, 'products' => $products]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
     public function edit(Request $request, $id)
     {
         $category = Category::findOrFail($id);
         return view('categories.edit', ['category' => $category]);
-        
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
         //Validate
@@ -87,19 +119,24 @@ class CategoryController extends Controller
         }
         $request->session()->flash('message', 'Successfully modified the category!');
         return redirect('/categories');
-    }
+        }
 
-    public function delete(Request $request, $id)
-    {
-        //delete
-        
-        $category = Category::FindOrFail($id);
-        $category->products()->sync([]);
-        $this->photoService->delete($category);
-        $category->delete();
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  \App\Product  $product
+         * @return \Illuminate\Http\Response
+         */
+        public function destroy(Request $request, $id)
+        {
+            //delete
+            $category = Category::FindOrFail($id);
+            $category->products()->sync([]);
+            $this->photoService->delete($category);
+            $category->delete();
 
-        //redirect
-        $request->session()->flash('message', 'Successfully deleted the category!');
-        return redirect('/categories');
-    }
+            //redirect
+            $request->session()->flash('message', 'Successfully deleted the category!');
+            return redirect('/categories');
+        }
 }

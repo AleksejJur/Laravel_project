@@ -63,7 +63,6 @@
                 </thead>
                 <tbody>
 
-                
                 @foreach ($orderItemProduct as $orderProduct)
                     <tr>
                         <th scope="row"></th>

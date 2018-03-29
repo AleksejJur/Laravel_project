@@ -1,6 +1,6 @@
 <h2>Add New Category</h2>
 <hr>
-<form action="/categories/store" method="post" enctype="multipart/form-data">
+<form action="/categories" method="post" enctype="multipart/form-data">
 	{{ csrf_field() }}
 	<div class="form-group">
 		<label for="title">Category Title</label>

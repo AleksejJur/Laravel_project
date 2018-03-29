@@ -42,7 +42,7 @@ class OrderController extends Controller
         $orders = Order::FindOrFail($id);
         $orderItemService = $orders->orderItems()->where('orderable_type', Service::class)->get();
         $orderItemProduct = $orders->orderItems()->where('orderable_type', Product::class)->get();
-        
+        // dd($orderItemService);
         return view('orders.show', ['orders' => $orders,
                                     'orderItemService' => $orderItemService, 
                                     'orderItemProduct' => $orderItemProduct]);

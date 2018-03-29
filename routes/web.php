@@ -18,18 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/categories', 'CategoryController@index')->name('categories.index');
-Route::get('/categories/create', 'CategoryController@create')->name('categories.create');
-Route::get('/categories/{id}', 'CategoryController@show')->name('categories.category');
-Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('category.edit');
-Route::post('/categories/{id}/edit', 'CategoryController@update')->name('categories.index');
-Route::post('/categories/store', 'CategoryController@store')->name('categories.index');
-Route::delete('/categories/{id}', 'CategoryController@delete')->name('category.index');
 
-Route::resource('products', 'ProductController');
-
+Route::resource('categories', 'CategoryController');
+Route::resource('products', 'ProductController'); 
 Route::resource('services', 'ServiceController');
-
 Route::resource('orders', 'OrderController');
 
 Route::post('orders/{id}/add/service',  'OrderController@addService')->name('orders.add.service');

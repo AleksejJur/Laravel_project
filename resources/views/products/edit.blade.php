@@ -6,7 +6,8 @@
       		<h1>Edit product</h1>
       		<hr>
 			<form action="{{url('products', [$product->id])}}" method="POST" enctype="multipart/form-data">
-			<input type="hidden" name="_method" value="PUT"> {{ csrf_field() }}
+			<input type="hidden" name="_method" value="PUT"> 
+			{{ csrf_field() }}
 			<div class="form-group">
 				<label for="title">Product Title</label>
 				<input type="text" class="form-control" id="productkTitle" name="title" value="{{$product->title}}">

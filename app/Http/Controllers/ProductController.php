@@ -160,9 +160,14 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->categories()->sync([]);
-        $this->photoService->delete($product);
-        $product->delete();
-        return redirect('/products');
+        if ($product->orderItems->count() > 0 )
+        {
+            abort(403);
+        } else {
+            $product->categories()->sync([]);
+            $this->photoService->delete($product);
+            $product->delete();
+            return redirect('/products');
+        }  
     }
 }

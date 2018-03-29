@@ -9,10 +9,17 @@ use App\Service;
 use App\Order;
 use App\OrderItem;
 use App\Services\PhotoService;
+use App\Orders\OrderService;
 
 class OrderController extends Controller
 {
-    
+    protected $orderService;
+
+    public function __construct(OrderService $orderService)
+    {
+        $this->orderService = $orderService;
+
+    }
     public function index()
     {
         $orders = Order::all();
@@ -42,7 +49,7 @@ class OrderController extends Controller
         $orders = Order::FindOrFail($id);
         $orderItemService = $orders->orderItems()->where('orderable_type', Service::class)->get();
         $orderItemProduct = $orders->orderItems()->where('orderable_type', Product::class)->get();
-        // dd($orderItemService);
+
         return view('orders.show', ['orders' => $orders,
                                     'orderItemService' => $orderItemService, 
                                     'orderItemProduct' => $orderItemProduct]);
@@ -67,12 +74,7 @@ class OrderController extends Controller
         ]);
 
         $order = Order::FindOrFail($id);
-        $order->adress = $request->adress;
-        $order->clientFullName = $request->clientFullName;
-        $order->clientNumber = $request->clientNumber;
-        $order->orderDescription = $request->orderDescription;
-        $order->orderStatus = $request->orderStatus;
-        $order->save();
+        $this->orderService->update($order, $request);
 
         return redirect('/orders');
     }
@@ -80,6 +82,7 @@ class OrderController extends Controller
     public function destroy(Request $request, $id)
     {
         $order = Order::FindOrFail($id);
+        $this->orderService->delete($order);
         $order->delete();
 
         return redirect('/orders');
@@ -92,7 +95,7 @@ class OrderController extends Controller
 
         $order = OrderItem::where('order_id', '=', $id)
                             ->where('orderable_id', '=', $request->service_id)
-                            ->where('orderable_type', '=', Service::class)->first();
+                            ->where('orderable_type', '=', service::class)->first();
 
                             if ($order != null) 
                             {
@@ -104,10 +107,11 @@ class OrderController extends Controller
                                $orderItem = OrderItem::create(['order_id' => $id,
                                       'price' => $service->price,
                                       'orderable_id' => $service->id,
-                                      'orderable_type' => Service::class,
+                                      'orderable_type' => service::class,
                                       'ammount' => $request->service_ammount,
                                      ]); 
                             }
+            
 
         return redirect('/orders');
     }

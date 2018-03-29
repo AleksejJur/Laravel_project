@@ -48,6 +48,14 @@
             </div>
         </div>
     @endforeach
+
+    @if(session()->has('message.content'))
+        <div class="alert alert-danger">
+            <ul>
+                {!! session('message.content') !!}
+            </ul>
+        </div>
+    @endif
     
 </div>
 @endsection

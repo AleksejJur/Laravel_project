@@ -20,7 +20,7 @@ class ServiceController extends Controller
     {   
         $services = Service::all();
         $order_id = $request->order_id;
-        
+
         return view('services.index', ['services' => $services, 'order_id' => $order_id]);
     }
 
@@ -61,6 +61,7 @@ class ServiceController extends Controller
     public function edit(Request $request, $id)
     {
         $service = Service::FindOrFail($id);
+
         return view('services.edit', ['service' => $service]);
     }
 
@@ -82,19 +83,23 @@ class ServiceController extends Controller
         if($request->hasFile('photoForService')) {
             $file = $request->file('photoForService');
             $this->photoService->update($file, $service);
-            
         }
+
         return redirect('/services');
     }
 
     public function destroy(Request $request, $id)
     {
         $service = Service::FindOrFail($id);
-        $this->photoService->delete($service);
-        $service->delete();
-
-        //redirect
-        $request->session()->flash('message', 'Successfully deleted the service!');
-        return redirect('/services');
+        
+        if ($service->orderItems->count() > 0 ) {   
+            $request->session()->flash('message.content', 'You cant delete this because service is used in order.');
+            return redirect('/services');
+        } else {  
+            $this->photoService->delete($service);
+            $service->delete();
+            return redirect('/services');
+        }
+        
     }
 }

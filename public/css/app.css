@@ -10010,3 +10010,7 @@ a.text-dark:focus {
   color: red;
 }
 
+#preview {
+  height: 100px;
+}
+

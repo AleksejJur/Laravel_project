@@ -17,7 +17,7 @@ class PhotoService
     {
         $image = storage_path('app/public/') . time() . $file->getClientOriginalName();
         Image::make($file)->resize(200, 200)->save($image);
-        $object->photos()->create(['file_name' => $file->getClientOriginalName()]);
+        $object->photos()->create(['file_name' => time() .$file->getClientOriginalName()]);
     }
 
     public function update($file, $object)

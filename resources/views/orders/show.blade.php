@@ -35,18 +35,29 @@
                         <th scope="col">Service ammount</th>
                         <th scope="col">Price</th>
                         <th scope="col">Total</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
 
                 @foreach ($orderItemService as $orderService)
+
+                
                     <tr>
                         <th scope="row"></th>
                             <td scope="row">{{$orderService->orderable->title}}</td>
                             <td scope="row">{{$orderService->ammount}}</td>
                             <td scope="row">{{$orderService->price}} EUR</td>
                             <td scope="row">{{$orderService->ammount * $orderService->price}}</td>
-                    </tr>
+                            <td scope="row">
+                                <form action="{{$orders->id}}/delete" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="item_id" value="{{$orderService->id}}" />
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button type="submit"><i class="fa fa-trash" /></i></button>
+                                </form>                          
+                            </td>
+                        </tr>
                 @endforeach
                     
                 </tbody>
@@ -59,6 +70,7 @@
                         <th scope="col">Product ammount</th>
                         <th scope="col">Price</th>
                         <th scope="col">Total</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,6 +82,14 @@
                             <td scope="row">{{$orderProduct->ammount}}</td>
                             <td scope="row">{{$orderProduct->price}} EUR</td>
                             <td scope="row">{{$orderProduct->ammount * $orderProduct->price}}</td>
+                            <td scope="row">
+                                <form action="{{$orders->id}}/delete" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="item_id" value="{{$orderProduct->id}}" />
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button type="submit"><i class="fa fa-trash" /></i></button>
+                                </form>                          
+                            </td>
                     </tr>
                 @endforeach
                     

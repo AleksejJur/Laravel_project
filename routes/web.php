@@ -27,4 +27,6 @@ Route::resource('orders', 'OrderController');
 Route::post('orders/{id}/add/service',  'OrderController@addService')->name('orders.add.service');
 Route::post('orders/{id}/add/product',  'OrderController@addProduct')->name('orders.add.product');
 
+Route::delete('orders/{id}/delete',  'OrderController@deleteOrderItem')->name('orders.delete.item');
+
 

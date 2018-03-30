@@ -49,7 +49,7 @@ class OrderController extends Controller
         $orders = Order::FindOrFail($id);
         $orderItemService = $orders->orderItems()->where('orderable_type', Service::class)->get();
         $orderItemProduct = $orders->orderItems()->where('orderable_type', Product::class)->get();
-
+        // dd( $orders->orderItems()->get());
         return view('orders.show', ['orders' => $orders,
                                     'orderItemService' => $orderItemService, 
                                     'orderItemProduct' => $orderItemProduct]);
@@ -112,4 +112,11 @@ class OrderController extends Controller
         
         return redirect('/orders');
     }
+
+    public function deleteOrderItem(Request $request, $id)
+    {   
+        $this->orderService->delete($request);
+        return back();
+    }
+
 }

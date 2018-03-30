@@ -42,8 +42,9 @@ class OrderService
 
     }
 
-    public function delete()
+    public function delete(Request $request)
     {
-       
+        $orderItem = OrderItem::FindOrFail($request->item_id);
+        $orderItem->delete();
     }
 }

@@ -18,6 +18,7 @@
         @endif
 
     <div>
+    <div class="row">
 
     @foreach ($services as $service)
         <div class="card" style="width: 15rem;">
@@ -49,6 +50,8 @@
         </div>
     @endforeach
 
+    </div>
+    
     @if(session()->has('message.content'))
         <div class="alert alert-danger">
             <ul>

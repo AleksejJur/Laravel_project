@@ -93,7 +93,7 @@ class ServiceController extends Controller
         $service = Service::FindOrFail($id);
         
         if ($service->orderItems->count() > 0 ) {   
-            $request->session()->flash('message.content', 'You cant delete this because service is used in order.');
+            $request->session()->flash('message.content', 'You cant delete because service is used in order.');
             return redirect('/services');
         } else {  
             $this->photoService->delete($service);

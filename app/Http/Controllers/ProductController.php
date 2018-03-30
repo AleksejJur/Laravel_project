@@ -158,16 +158,24 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request, Product $product)
     {
-        if ($product->orderItems->count() > 0 )
-        {
-            abort(403);
-        } else {
-            $product->categories()->sync([]);
+        // if ($product->orderItems->count() > 0 )
+        // {
+        //     abort(403);
+        // } else {
+        //     $product->categories()->sync([]);
+        //     $this->photoService->delete($product);
+        //     $product->delete();
+        //     return redirect('/products');
+        // }  
+        if ($product->orderItems->count() > 0 ) {   
+            $request->session()->flash('message.content', 'You cant delete because product is used in order.');
+            return redirect('/products');
+        } else {  
             $this->photoService->delete($product);
             $product->delete();
             return redirect('/products');
-        }  
+        }
     }
 }

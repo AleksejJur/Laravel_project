@@ -14,10 +14,11 @@ use Image;
 class PhotoService
 {
     public function add($file, $object) 
-    {
-        $image = storage_path('app/public/') . time() . $file->getClientOriginalName();
+    {   
+        $fileName = time() . $file->getClientOriginalName();
+        $image = storage_path('app/public/') . $fileName;
         Image::make($file)->resize(200, 200)->save($image);
-        $object->photos()->create(['file_name' => time() .$file->getClientOriginalName()]);
+        $object->photos()->create(['file_name' => $fileName]);
     }
 
     public function update($file, $object)

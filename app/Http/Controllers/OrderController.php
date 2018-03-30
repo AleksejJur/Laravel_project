@@ -74,7 +74,12 @@ class OrderController extends Controller
         ]);
 
         $order = Order::FindOrFail($id);
-        $this->orderService->update($order, $request);
+        $order->adress = $request->adress;
+        $order->clientFullName = $request->clientFullName;
+        $order->clientNumber = $request->clientNumber;
+        $order->orderDescription = $request->orderDescription;
+        $order->orderStatus = $request->orderStatus;
+        $order->save();
 
         return redirect('/orders');
     }
@@ -82,7 +87,7 @@ class OrderController extends Controller
     public function destroy(Request $request, $id)
     {
         $order = Order::FindOrFail($id);
-        $this->orderService->delete($order);
+        $order->orderItems()->delete();
         $order->delete();
 
         return redirect('/orders');
@@ -92,26 +97,8 @@ class OrderController extends Controller
     {
         $service = Service::FindOrFail($request->service_id);
         $orders = Order::FindOrFail($id);
-
-        $order = OrderItem::where('order_id', '=', $id)
-                            ->where('orderable_id', '=', $request->service_id)
-                            ->where('orderable_type', '=', service::class)->first();
-
-                            if ($order != null) 
-                            {
-                                $order->ammount += $request->service_ammount;
-                                $order->save();
-                            } 
-                            else 
-                            {
-                               $orderItem = OrderItem::create(['order_id' => $id,
-                                      'price' => $service->price,
-                                      'orderable_id' => $service->id,
-                                      'orderable_type' => service::class,
-                                      'ammount' => $request->service_ammount,
-                                     ]); 
-                            }
-            
+        $ammount = $request->service_ammount;
+        $this->orderService->add($orders, $service, $ammount);
 
         return redirect('/orders');
     }
@@ -120,26 +107,9 @@ class OrderController extends Controller
     {
         $product = Product::FindOrFail($request->product_id);
         $orders = Order::FindOrFail($id);
-
-        $order = OrderItem::where('order_id', '=', $id)
-                            ->where('orderable_id', '=', $request->product_id)
-                            ->where('orderable_type', '=', Product::class)->first();
-
-                            if ($order != null) 
-                            {
-                                $order->ammount += $request->product_ammount;
-                                $order->save();
-                            } 
-                                else 
-                            {
-                               $orderItem = OrderItem::create(['order_id' => $id,
-                                      'price' => $product->price,
-                                      'orderable_id' => $product->id,
-                                      'orderable_type' => Product::class,
-                                      'ammount' => $request->product_ammount,
-                                     ]); 
-                            }
-
+        $ammount = $request->product_ammount;
+        $this->orderService->add($orders, $product, $ammount);
+        
         return redirect('/orders');
     }
 }

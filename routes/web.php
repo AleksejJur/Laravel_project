@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('categories', 'CategoryController');
 Route::resource('products', 'ProductController'); 
@@ -28,5 +28,7 @@ Route::post('orders/{id}/add/service',  'OrderController@addService')->name('ord
 Route::post('orders/{id}/add/product',  'OrderController@addProduct')->name('orders.add.product');
 
 Route::delete('orders/{id}/delete',  'OrderController@deleteOrderItem')->name('orders.delete.item');
+
+Route::get('/search/{searchKey}', 'SearchController@search'); //search test
 
 

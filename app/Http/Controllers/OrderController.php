@@ -10,12 +10,9 @@ use App\Order;
 use App\OrderItem;
 use App\Services\PhotoService;
 use App\Orders\OrderService;
-use Laravel\Scout\Searchable;
 
 class OrderController extends Controller
 {
-    use Searchable;
-
     protected $orderService;
 
     public function __construct(OrderService $orderService)

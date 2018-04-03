@@ -3,9 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Service extends Model
-{
+{   
+    use Searchable;
+
+    public function searchableAs()
+    {
+        return 'serviceSearch';
+    }
+
     public $table = 'services';
 
     protected $fillable = ['title', 'content', 'price'];

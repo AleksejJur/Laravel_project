@@ -40,9 +40,9 @@
                 </thead>
                 <tbody>
 
-                @foreach ($orderItemService as $orderService)
+                @foreach ($orderItemService as $key => $orderService)
                     <tr>
-                        <th scope="row"></th>
+                        <th scope="row">{{ ++$key }}</th>
                             <td scope="row">{{$orderService->orderable->title}}</td>
                             <td scope="row">{{$orderService->ammount}}</td>
                             <td scope="row">{{$orderService->price}} EUR</td>
@@ -76,7 +76,7 @@
 
                 @foreach ($orderItemProduct as $orderProduct)
                     <tr>
-                        <th scope="row"></th>
+                        <th scope="row">{{ ++$key }}</th>
                             <td scope="row">{{$orderProduct->orderable->title}}</td>
                             <td scope="row">{{$orderProduct->ammount}}</td>
                             <td scope="row">{{$orderProduct->price}} EUR</td>

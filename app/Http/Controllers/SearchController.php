@@ -10,15 +10,16 @@ use App\Service;
 use App\User;
 
 class SearchController extends Controller
-{
-    public function search($searchKey)
+{   
+    public function searchList(Request $request)
     {
-        $categories = Category::search($searchKey)->get();  
-        $orders = Order::search($searchKey)->get();
-        $products = Product::search($searchKey)->get();
-        $services = Service::search($searchKey)->get();
-        $users = User::search($searchKey)->get();
-
-        return view('search', compact('categories', 'orders', 'products', 'services', 'users'));
+        if($request->has('search')) {
+            $users = User::search($request->search)->take(10)->get();
+            $orders = Order::search($request->search)->take(10)->get();
+            $categories = Category::search($request->search)->take(10)->get();
+            $products = Product::search($request->search)->take(10)->get();
+            $services = Service::search($request->search)->take(10)->get();
+        }
+        return view('searchList',compact('categories', 'orders', 'products', 'services', 'users'));
     }
 }

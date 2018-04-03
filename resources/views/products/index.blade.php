@@ -24,7 +24,7 @@
             <div class="card" style="width: 15rem;">
                 <div class="card-body">
 
-                @if ($product->photos->count() > 0) 
+                @if ($product->photos->count() > 0)
                     <img class="card-img-top" src="{{ asset('storage/'. $product->photos[0]->file_name)}}" alt="Card image cap">
                 @endif
 

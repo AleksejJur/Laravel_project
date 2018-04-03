@@ -31,9 +31,9 @@
         </thead>
         <tbody>
             
-            @foreach ($orders as $order)
+            @foreach ($orders as $key => $order)
                 <tr>
-                    <th scope="row">{{$order->id}}</th>
+                    <th scope="row">{{ ++$key }}</th>
                     <td>{{$order->adress}}</td>
                     <td>{{$order->clientFullName}}</td>
                     <td>{{$order->orderStatus}}</td>

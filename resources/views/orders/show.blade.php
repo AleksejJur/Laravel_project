@@ -41,21 +41,20 @@
                 <tbody>
 
                 @foreach ($orderItemService as $orderService)
-
-                
                     <tr>
                         <th scope="row"></th>
                             <td scope="row">{{$orderService->orderable->title}}</td>
                             <td scope="row">{{$orderService->ammount}}</td>
                             <td scope="row">{{$orderService->price}} EUR</td>
                             <td scope="row">{{$orderService->ammount * $orderService->price}}</td>
-                            <td scope="row">
+                            <td class="row" scope="row">
+                                <button class="btn"><i class="fas fa-edit"></i></button>
                                 <form action="{{$orders->id}}/delete" method="POST">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="item_id" value="{{$orderService->id}}" />
                                     <input type="hidden" name="_method" value="DELETE" />
-                                    <button type="submit"><i class="fa fa-trash" /></i></button>
-                                </form>                          
+                                    <button class="btn" type="submit"><i class="fa fa-trash" /></i></button>
+                                </form>                                
                             </td>
                         </tr>
                 @endforeach
@@ -82,13 +81,14 @@
                             <td scope="row">{{$orderProduct->ammount}}</td>
                             <td scope="row">{{$orderProduct->price}} EUR</td>
                             <td scope="row">{{$orderProduct->ammount * $orderProduct->price}}</td>
-                            <td scope="row">
+                            <td class="row" scope="row">
+                                <button class="btn"><i class="fas fa-edit"></i></button>                                
                                 <form action="{{$orders->id}}/delete" method="POST">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="item_id" value="{{$orderProduct->id}}" />
                                     <input type="hidden" name="_method" value="DELETE" />
-                                    <button type="submit"><i class="fa fa-trash" /></i></button>
-                                </form>                          
+                                    <button class="btn" type="submit"><i class="fa fa-trash" /></i></button>
+                                </form>
                             </td>
                     </tr>
                 @endforeach

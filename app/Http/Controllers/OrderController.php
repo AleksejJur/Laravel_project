@@ -10,9 +10,12 @@ use App\Order;
 use App\OrderItem;
 use App\Services\PhotoService;
 use App\Orders\OrderService;
+use Laravel\Scout\Searchable;
 
 class OrderController extends Controller
 {
+    use Searchable;
+
     protected $orderService;
 
     public function __construct(OrderService $orderService)
@@ -95,6 +98,10 @@ class OrderController extends Controller
 
     public function addService(Request $request, $id) 
     {
+        $request->validate([
+            'service_ammount' => 'required|integer|min:1',
+        ]);
+
         $service = Service::FindOrFail($request->service_id);
         $orders = Order::FindOrFail($id);
         $ammount = $request->service_ammount;
@@ -105,6 +112,10 @@ class OrderController extends Controller
 
     public function addProduct(Request $request, $id)
     {
+        $request->validate([
+            'product_ammount' => 'required|integer|min:1',
+        ]);
+
         $product = Product::FindOrFail($request->product_id);
         $orders = Order::FindOrFail($id);
         $ammount = $request->product_ammount;

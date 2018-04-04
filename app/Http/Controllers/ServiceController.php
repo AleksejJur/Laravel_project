@@ -84,6 +84,10 @@ class ServiceController extends Controller
             $file = $request->file('photoForService');
             $this->photoService->update($file, $service);
         }
+        if ($request->has('file'))
+        {
+            $this->photoService->deleteSome($request->file);
+        }
 
         return redirect('/services');
     }

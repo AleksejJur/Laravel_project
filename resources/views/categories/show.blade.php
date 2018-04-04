@@ -37,6 +37,9 @@
                                 </div>
                             </p>
                         </div>
+                        <a href="{{ URL::to('products/' . $product->id . '/edit') }}">
+                            <button type="button" class="btn btn-warning">Edit</button>
+                        </a>
                     @endforeach
 
                 </div>

@@ -37,8 +37,6 @@
 							<input onchange="readURL(this);" type="file" name="photoForProduct[]" id="photoForProduct" required multiple title="Upload one or more images">
 							New :<img  id="preview"  />
 						</p>
-						<input id="file-input" type="file" multiple>
-						<div id="preview"></div>
 					</div>
 				</div>
 				<div class="form-group">

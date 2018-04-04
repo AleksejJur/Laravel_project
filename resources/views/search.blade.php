@@ -54,7 +54,7 @@
 
                 @foreach ($categories as $category)    
                     <tr>
-                        <th scope="row"><a href="">{{ $category->title }}</a></th>
+                        <th scope="row"><a href="/categories/{{$category->id}}">{{ $category->title }}</a></th>
                     </tr>
                 @endforeach
 
@@ -73,7 +73,7 @@
 
                 @foreach ($services as $service)    
                     <tr>
-                        <th scope="row"><a href="">{{ $service->title }}</a></th>
+                        <th scope="row"><a href="/services/{{$service->id}}">{{ $service->title }}</a></th>
                     </tr>
                 @endforeach
 
@@ -92,7 +92,7 @@
 
                 @foreach ($products as $product)    
                     <tr>
-                        <th scope="row"><a href="">{{ $product->title }}</a></th>
+                        <th scope="row"><a href="/products/{{$product->id}}">{{ $product->title }}</a></th>
                     </tr>
                 @endforeach
 

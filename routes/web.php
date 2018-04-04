@@ -29,8 +29,6 @@ Route::post('orders/{id}/add/product',  'OrderController@addProduct')->name('ord
 
 Route::delete('orders/{id}/delete',  'OrderController@deleteOrderItem')->name('orders.delete.item');
 
-// Route::get('/search/{searchKey}', 'SearchController@search')->name('search'); //search test
-
-Route::get('searchList', 'SearchController@searchList')->name('searchList');
+Route::get('search', 'SearchController@search')->name('search');
 
 

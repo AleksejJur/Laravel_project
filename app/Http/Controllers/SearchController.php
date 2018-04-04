@@ -11,7 +11,7 @@ use App\User;
 
 class SearchController extends Controller
 {   
-    public function searchList(Request $request)
+    public function search(Request $request)
     {
         if($request->has('search')) {
             $users = User::search($request->search)->take(10)->get();
@@ -20,6 +20,9 @@ class SearchController extends Controller
             $products = Product::search($request->search)->take(10)->get();
             $services = Service::search($request->search)->take(10)->get();
         }
-        return view('searchList',compact('categories', 'orders', 'products', 'services', 'users'));
+
+        // dd($orders);
+        
+        return view('search',compact('categories', 'orders', 'products', 'services', 'users'));
     }
 }

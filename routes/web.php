@@ -13,22 +13,23 @@
 
 Route::get('/', function () {
     return view('home');
-})->middleware('guest');
+});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
+Route::get('error', 'HomeController@error')->name('error');
 
-Route::resource('categories', 'CategoryController');
-Route::resource('products', 'ProductController'); 
-Route::resource('services', 'ServiceController');
-Route::resource('orders', 'OrderController');
 
-Route::post('orders/{id}/add/service',  'OrderController@addService')->name('orders.add.service');
-Route::post('orders/{id}/add/product',  'OrderController@addProduct')->name('orders.add.product');
+Route::resource('categories', 'CategoryController')->middleware('admin');
+Route::resource('products', 'ProductController')->middleware('admin'); 
+Route::resource('services', 'ServiceController')->middleware('admin');
+Route::resource('orders', 'OrderController', ['only' =>'index']);
+Route::resource('orders', 'OrderController', ['except' =>'index'])->middleware('admin');
 
-Route::delete('orders/{id}/delete',  'OrderController@deleteOrderItem')->name('orders.delete.item');
+Route::post('orders/{id}/add/service',  'OrderController@addService')->name('orders.add.service')->middleware('admin');
+Route::post('orders/{id}/add/product',  'OrderController@addProduct')->name('orders.add.product')->middleware('admin');
+
+Route::delete('orders/{id}/delete',  'OrderController@deleteOrderItem')->name('orders.delete.item')->middleware('admin');
 
 Route::get('search', 'SearchController@search')->name('search');
-
-

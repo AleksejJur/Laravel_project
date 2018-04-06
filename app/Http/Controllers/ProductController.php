@@ -163,7 +163,8 @@ class ProductController extends Controller
         if ($product->orderItems->count() > 0 ) {   
             $request->session()->flash('message.content', 'You cant delete because product is used in order.');
             return redirect('/products');
-        } else {  
+        } else {
+            $product->categories()->sync([]);
             $this->photoService->delete($product);
             $product->delete();
             return redirect('/products');

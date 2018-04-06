@@ -5,7 +5,9 @@
         <h2 class="">Orders</h2>
         <hr>
         <p class="text-right">
-            <a href="/orders/create" class="btn btn-success">Add New Order</a>
+            @admin
+                <a href="/orders/create" class="btn btn-success">Add New Order</a>
+            @endadmin
         </p>
     </div>
     <hr>
@@ -41,6 +43,8 @@
                     <td>
                         <div class="row">
                             <a href="/orders/{{$order->id}}"><button>View</button></a>
+
+                    @admin
                             <a href="/orders/{{$order->id}}/edit"><button>Edit</button></a>
                             <form action="/orders/{{$order->id}}" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
@@ -49,6 +53,8 @@
                             </form>
                         </div>
                     </td>
+                    @endadmin
+
                 </tr>
             @endforeach
             

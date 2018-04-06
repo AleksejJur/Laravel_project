@@ -28,8 +28,12 @@
                             <br>
                         </p>
                     </div>
-                    <a href="/services/{{$services->id}}/edit" class="btn btn-warning mr-2">Edit</a>
-                </div>
+
+                    @admin
+                        <a href="/services/{{$services->id}}/edit" class="btn btn-warning mr-2">Edit</a>
+                    @endadmin
+                    
+                    </div>
             </div>
         </div>
     </div>

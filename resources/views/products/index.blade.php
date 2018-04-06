@@ -5,7 +5,11 @@
         <h2 class="text-left">Products</h2>
         <hr>
         <p class="text-right">
+
+        @admin
             <a href="/products/create" class="btn btn-success">Add New Product</a>
+        @endadmin
+        
         </p>
     </div>
     <hr>
@@ -35,20 +39,23 @@
                     <p class="card-text">Material : {{$product->material}}</p>
                     <p class="card-text">Price : {{$product->price}} EUR</p>
 
-                    <a href="{{ URL::to('products/' . $product->id . '/edit') }}">
-                        <button type="button" class="btn btn-warning">Edit</button>
-                    </a>&nbsp;
-                    <form action="{{url('products', [$product->id])}}" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-danger" value="Delete"/>
-                    </form>
-                    <form action="/orders/{{$order_id}}/add/product" method="POST">
-                        <input type="number" name="product_ammount">
-                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-success mr-2" value="Add"/>
-                    </form>
+                    @admin
+                        <a href="{{ URL::to('products/' . $product->id . '/edit') }}">
+                            <button type="button" class="btn btn-warning">Edit</button>
+                        </a>&nbsp;
+                        <form action="{{url('products', [$product->id])}}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="submit" class="btn btn-danger" value="Delete"/>
+                        </form>
+                        <form action="/orders/{{$order_id}}/add/product" method="POST">
+                            <input type="number" name="product_ammount">
+                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="submit" class="btn btn-success mr-2" value="Add"/>
+                        </form>
+                    @endadmin
+
                 </div>
             </div>
         @endforeach

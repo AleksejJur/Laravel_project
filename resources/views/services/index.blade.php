@@ -5,7 +5,11 @@
         <h2 class="">Services</h2>
         <hr>
         <p class="text-right">
-            <a href="/services/create" class="btn btn-success">Add New Service</a>
+
+            @admin
+                <a href="/services/create" class="btn btn-success">Add New Service</a>
+            @endadmin
+
         </p>
     </div>
     <hr>
@@ -33,18 +37,22 @@
                 <p class="card-text">{{$service->price}}</p>
                 <div class="row justify-content-center">
                     <a href="/services/{{$service->id}}" class="btn btn-primary mr-2">View</a>
-                    <a href="/services/{{$service->id}}/edit" class="btn btn-warning mr-2">Edit</a>
-                    <form action="/services/{{$service->id}}" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-danger mr-2" value="Delete"/>
-                    </form>
-                    <form action="/orders/{{$order_id}}/add/service" method="POST">
-                        <input type="number" name="service_ammount">
-                        <input type="hidden" name="service_id" value="{{$service->id}}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-success mr-2" value="Add"/>
-                    </form>
+
+                    @admin
+                        <a href="/services/{{$service->id}}/edit" class="btn btn-warning mr-2">Edit</a>
+                        <form action="/services/{{$service->id}}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="submit" class="btn btn-danger mr-2" value="Delete"/>
+                        </form>
+                        <form action="/orders/{{$order_id}}/add/service" method="POST">
+                            <input type="number" name="service_ammount">
+                            <input type="hidden" name="service_id" value="{{$service->id}}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="submit" class="btn btn-success mr-2" value="Add"/>
+                        </form>
+                    @endadmin
+                    
                 </div>    
             </div>
         </div>

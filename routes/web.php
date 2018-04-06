@@ -28,7 +28,8 @@ Route::resource('products', 'ProductController', ['only' =>'index']);
 Route::resource('products', 'ProductController', ['except' =>'index'])->middleware('admin');
 
 Route::resource('services', 'ServiceController',  ['only' =>'index']);
-Route::resource('services', 'ServiceController', ['except' =>'index'])->middleware('admin');
+// Route::resource('services', 'ServiceController',  ['only' =>'view']);
+Route::resource('services', 'ServiceController', ['except' => 'index'])->middleware('admin');
 
 Route::resource('orders', 'OrderController', ['only' =>'index']);
 Route::resource('orders', 'OrderController', ['except' =>'index'])->middleware('admin');

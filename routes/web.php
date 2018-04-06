@@ -21,9 +21,15 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
 Route::get('error', 'HomeController@error')->name('error');
 
 
-Route::resource('categories', 'CategoryController')->middleware('admin');
-Route::resource('products', 'ProductController')->middleware('admin'); 
-Route::resource('services', 'ServiceController')->middleware('admin');
+Route::resource('categories', 'CategoryController', ['only' =>'index']);
+Route::resource('categories', 'CategoryController', ['except' =>'index'])->middleware('admin');
+
+Route::resource('products', 'ProductController', ['only' =>'index']);
+Route::resource('products', 'ProductController', ['except' =>'index'])->middleware('admin');
+
+Route::resource('services', 'ServiceController',  ['only' =>'index']);
+Route::resource('services', 'ServiceController', ['except' =>'index'])->middleware('admin');
+
 Route::resource('orders', 'OrderController', ['only' =>'index']);
 Route::resource('orders', 'OrderController', ['except' =>'index'])->middleware('admin');
 

@@ -105,7 +105,7 @@ class CategoryController extends Controller
         $request->validate([
             'title' => 'required|min:3',
             'content' => 'required',
-            'photoForCategory' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'photoForCategory' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024|dimensions:max_width=100,max_height=100',
         ]);
 
         $category = Category::findOrFail($id);

@@ -31,9 +31,9 @@ Route::resource('products', 'ProductController', ['only' => ['index', 'show']]);
 Route::resource('services', 'ServiceController', ['except' => ['index', 'show']])->middleware('admin');
 Route::resource('services', 'ServiceController',  ['only' => ['index', 'show']]);
 
+Route::resource('orders', 'OrderController', ['except' => ['index', 'show']])->middleware('admin');
+Route::resource('orders', 'OrderController', ['only' => ['index', 'show']]);
 
-Route::resource('orders', 'OrderController', ['only' => 'index']);
-Route::resource('orders', 'OrderController', ['except' => 'index'])->middleware('admin');
 
 Route::post('orders/{id}/add/service',  'OrderController@addService')->name('orders.add.service')->middleware('admin');
 Route::post('orders/{id}/add/product',  'OrderController@addProduct')->name('orders.add.product')->middleware('admin');

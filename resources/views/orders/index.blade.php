@@ -32,6 +32,7 @@
             </tr>
         </thead>
         <tbody>
+
             
             @foreach ($orders as $key => $order)
                 <tr>

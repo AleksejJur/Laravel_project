@@ -21,12 +21,60 @@
     <div class="card">
         <div class="card-header">{{$orders->adress}} - {{$orders->clientFullName}} - +{{$orders->clientNumber}}</div>
         <div class="card-header">
-            <a href="/services/?order_id={{$orders->id}}"><button>Add Service From List</button></a>
-            <a href="/products/?order_id={{$orders->id}}"><button>Add Product From List</button></a>
+            <a href="/services/?order_id={{$orders->id}}"><button>Add Service</button></a>
+            <a href="/products/?order_id={{$orders->id}}"><button>Add Product</button></a>
         </div>
         <div class="card-body">
             <h5 class="card-title">Status : {{$orders->status}}</h5>
             <p class="card-text">{{$orders->orderDescription}}.</p>
+            <div class="card-title">
+                <h3 class="text-center">Pirmas Etapas</h3>
+            </div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Darbu Pavadinimas</th>
+                        <th scope="col">Mato vnt.</th>
+                        <th scope="col">Kiekis</th>
+                        <th scope="col">Kaina &euro; Darbas</th>
+                        <th scope="col">Kaina &euro; Medziagos</th>
+                        <th scope="col">Kaina &euro; Prietaisai</th>
+                        <th scope="col">Kaina &euro; Mechanizmai</th>
+                        <th scope="col">Suma &euro;</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                            <td scope="row">Demontavimo darbai (vandentekio, kanalizacijos, prietaisu demontavimas)</td>
+                            <td scope="row">komp</td>
+                            <td scope="row">100</td>
+                            <td scope="row">1000</td>
+                            <td scope="row">1000</td>
+                            <td scope="row">100</td>
+                            <td scope="row">100</td>
+                            <td scope="row">10000</td>
+                    </tr>    
+                </tbody>
+            </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -74,7 +122,7 @@
                 </thead>
                 <tbody>
 
-                @foreach ($orderItemProduct as $orderProduct)
+                @foreach ($orderItemProduct as $key => $orderProduct)
                     <tr>
                         <th scope="row">{{ ++$key }}</th>
                             <td scope="row">{{$orderProduct->orderable->title}}</td>

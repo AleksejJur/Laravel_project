@@ -13704,22 +13704,10 @@ __webpack_require__(12);
 //     el: '#app'
 // });
 
-
-// peredelat s jQuery
-// function readURL(input) {
-//     if (input.files && input.files[0]) {
-//         var reader = new FileReader();
-//         reader.onload = function (e) {
-//         $('#test').attr('src', e.target.result);
-//     }
-//         reader.readAsDataURL(input.files[0]);
-//     }
-// }
-
 Object(__WEBPACK_IMPORTED_MODULE_0_jquery__["$"])(document).ready(function (e) {
-  Object(__WEBPACK_IMPORTED_MODULE_0_jquery__["$"])(".img-check").click(function () {
-    Object(__WEBPACK_IMPORTED_MODULE_0_jquery__["$"])(this).toggleClass("check");
-  });
+    Object(__WEBPACK_IMPORTED_MODULE_0_jquery__["$"])(".img-check").click(function () {
+        Object(__WEBPACK_IMPORTED_MODULE_0_jquery__["$"])(this).toggleClass("check");
+    });
 });
 
 /***/ }),

@@ -10014,3 +10014,7 @@ a.text-dark:focus {
   height: 100px;
 }
 
+body {
+  background-color: red;
+}
+
